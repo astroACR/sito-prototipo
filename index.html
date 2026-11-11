@@ -1,0 +1,1295 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#15181D">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="SITO">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="format-detection" content="telephone=no">
+<title>SITO · Prototipo</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2315181D'/%3E%3Cpath d='M16 6l8 3v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V9z' fill='none' stroke='%23F2B705' stroke-width='2.5' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<style>
+/* =========================================================
+   1. Tokens de diseño
+   ========================================================= */
+:root{
+  --bg:#F6F5F1; --ink:#15181D; --ink2:#4B5160; --line:#E2E0D8; --card:#FFFFFF;
+  --yellow:#F2B705; --red:#B42318; --red-bg:#FDECEA; --red-ink:#7A1A12;
+  --green:#1E7B45; --green-bg:#E3F2E8; --blue:#1F4FB3; --blue-bg:#E3EAF9;
+  --amber-ink:#8A5A00; --warn-bg:#FFF7DB; --warn-ink:#5C3D00;
+  --r-card:16px; --r-btn:18px;
+  --sat:env(safe-area-inset-top,0px); --sab:env(safe-area-inset-bottom,0px);
+  --sal:env(safe-area-inset-left,0px); --sar:env(safe-area-inset-right,0px);
+  --gx:16px;
+}
+*{box-sizing:border-box;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;height:100%}
+body{
+  background:#E7E5DE;color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:16px;line-height:1.4;-webkit-text-size-adjust:100%;text-size-adjust:100%;
+  overflow:hidden;
+}
+button,input{font:inherit;color:inherit}
+h1,h2,h3,p{margin:0}
+:focus{outline:none}
+:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* =========================================================
+   2. Contenedor de la app (máx. 430 px, 100dvh, áreas seguras)
+   ========================================================= */
+#app{
+  position:relative;max-width:430px;margin:0 auto;
+  height:100vh;height:100dvh;background:var(--bg);
+  display:flex;flex-direction:column;overflow:hidden;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+}
+@media (min-width:431px){#app{box-shadow:0 0 0 1px var(--line),0 10px 40px rgba(21,24,29,.08)}}
+#view{flex:1;min-height:0;display:flex;flex-direction:column}
+.screen{flex:1;min-height:0;display:flex;flex-direction:column}
+.top{
+  flex:none;display:flex;align-items:center;justify-content:space-between;gap:12px;
+  min-height:64px;
+  padding:calc(var(--sat) + 8px) calc(var(--gx) + var(--sar)) 8px calc(var(--gx) + var(--sal));
+}
+.scroll{
+  flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;
+  overscroll-behavior:contain;
+  padding:4px calc(var(--gx) + var(--sar)) 24px calc(var(--gx) + var(--sal));
+}
+.foot{
+  flex:none;display:flex;flex-direction:column;gap:10px;background:var(--bg);
+  border-top:1px solid var(--line);
+  padding:12px calc(var(--gx) + var(--sar)) calc(12px + var(--sab)) calc(var(--gx) + var(--sal));
+}
+.foot.has-nav{padding-bottom:0}
+
+/* Transiciones entre pantallas (150–200 ms) */
+.enter-fwd{animation:inFwd .18s ease-out}
+.enter-back{animation:inBack .18s ease-out}
+.enter-fade{animation:inFade .16s ease-out}
+@keyframes inFwd{from{opacity:0;transform:translateX(18px)}to{opacity:1;transform:none}}
+@keyframes inBack{from{opacity:0;transform:translateX(-18px)}to{opacity:1;transform:none}}
+@keyframes inFade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+
+/* =========================================================
+   3. Tipografía y piezas comunes
+   ========================================================= */
+.brand{
+  font-size:22px;font-weight:800;letter-spacing:.02em;line-height:44px;min-height:44px;
+  display:inline-block;padding-right:8px;cursor:default;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;
+}
+.meta{font-size:15px;color:var(--ink2);text-align:right;line-height:1.25}
+.meta b{color:var(--ink);font-weight:700}
+.h1{font-size:28px;line-height:1.15;font-weight:800;letter-spacing:-.01em}
+.sub{font-size:16px;color:var(--ink2);margin-top:6px}
+.hello{font-size:17px;color:var(--ink2);margin-top:16px}
+.section-t{font-size:17px;font-weight:800;margin:24px 0 10px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-card)}
+.ic{flex:none;display:block}
+.small{font-size:15px;color:var(--ink2)}
+.center{text-align:center}
+
+/* Botones */
+.btn{
+  appearance:none;-webkit-appearance:none;border:0;margin:0;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+  min-height:60px;padding:0 20px;border-radius:var(--r-btn);
+  font-size:17px;font-weight:800;line-height:1.2;text-decoration:none;text-align:center;
+  background:transparent;color:var(--ink);transition:transform .08s ease;
+}
+.btn:active{transform:scale(.985)}
+.btn-primary{background:var(--yellow);color:var(--ink)}
+.btn-danger{background:var(--red);color:#fff}
+.btn-outline{background:var(--card);border:2px solid var(--ink);min-height:56px}
+.btn[aria-disabled="true"]{background:var(--line);color:var(--ink2);border-color:var(--line)}
+.btn[aria-disabled="true"]:active{transform:none}
+.link{
+  display:flex;align-items:center;justify-content:center;min-height:44px;
+  font-size:16px;font-weight:700;color:var(--ink);text-decoration:underline;text-underline-offset:3px;
+  background:none;border:0;cursor:pointer;width:100%;
+}
+.iconbtn{
+  appearance:none;border:2px solid var(--line);background:var(--card);border-radius:999px;
+  width:48px;height:48px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex:none;padding:0;
+}
+.iconbtn:active{background:var(--line)}
+
+/* Chips */
+.chip{display:inline-flex;align-items:center;gap:6px;min-height:30px;padding:4px 12px;border-radius:999px;font-size:15px;font-weight:700}
+.chip-blue{background:var(--blue-bg);color:var(--blue)}
+.chip-amber{background:var(--warn-bg);color:var(--amber-ink)}
+.chip-green{background:var(--green-bg);color:var(--green)}
+.chip-red{background:var(--red-bg);color:var(--red-ink)}
+
+/* Íconos con fondo de color según estado */
+.tile{width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex:none}
+.tile-blue{background:var(--blue);color:#fff}
+.tile-amber{background:var(--yellow);color:var(--ink)}
+.tile-green{background:var(--green);color:#fff}
+.tile-dark{background:var(--ink);color:var(--yellow)}
+.st-blue{color:var(--blue)} .st-amber{color:var(--amber-ink)} .st-green{color:var(--green)}
+
+/* Casillas (24 px en consentimiento, 26 px en checklist) */
+.cbx{
+  appearance:none;-webkit-appearance:none;margin:0;flex:none;cursor:pointer;
+  width:24px;height:24px;border:2px solid var(--ink2);border-radius:6px;background:var(--card);
+  display:inline-block;position:relative;
+}
+.cbx.lg{width:26px;height:26px;border-radius:7px}
+.cbx:checked{background:var(--ink);border-color:var(--ink)}
+.cbx:checked::after{
+  content:"";position:absolute;left:50%;top:45%;width:6px;height:12px;
+  border:solid var(--yellow);border-width:0 3px 3px 0;transform:translate(-50%,-50%) rotate(45deg);
+}
+.cbx:disabled{opacity:.75;cursor:default}
+.cbx:focus-visible{outline:3px solid var(--blue);outline-offset:2px}
+
+/* Aviso de seguridad */
+.warn{display:flex;gap:12px;align-items:flex-start;background:var(--warn-bg);color:var(--warn-ink);border-radius:var(--r-card);padding:14px 16px;font-size:16px;font-weight:600;margin-top:14px}
+
+/* =========================================================
+   4. Pantalla 1 · Consentimiento
+   ========================================================= */
+.shield{width:60px;height:60px;border-radius:18px;background:var(--ink);color:var(--yellow);display:flex;align-items:center;justify-content:center;margin:2px 0 14px}
+.pcard{display:flex;gap:14px;align-items:flex-start;padding:14px 16px;margin-top:10px}
+.pcard .pi{width:44px;height:44px;border-radius:12px;background:var(--bg);display:flex;align-items:center;justify-content:center;flex:none;color:var(--ink)}
+.pcard p{font-size:16px;color:var(--ink2)}
+.pcard b{color:var(--ink);display:block;font-size:17px;margin-bottom:2px}
+.agree{display:flex;gap:14px;align-items:center;min-height:52px;padding:4px 2px;font-size:16px;font-weight:600;cursor:pointer}
+
+/* =========================================================
+   5. Pantalla 2 · Mis tareas
+   ========================================================= */
+.offline{display:flex;gap:12px;align-items:flex-start;background:var(--ink);color:#fff;border-radius:var(--r-card);padding:14px 16px;font-size:16px}
+.offline .ic{color:var(--yellow);margin-top:1px}
+.offline b{font-weight:800}
+.progress{margin-top:16px}
+.bar{height:10px;border-radius:999px;background:var(--line);overflow:hidden}
+.bar > i{display:block;height:100%;background:var(--green);border-radius:999px;transition:width .3s ease}
+.prow{display:flex;justify-content:space-between;gap:12px;font-size:15px;color:var(--ink2);margin-top:8px}
+.prow b{color:var(--ink)}
+.tasks{display:flex;flex-direction:column;gap:10px;margin-top:18px}
+.task{
+  appearance:none;width:100%;text-align:left;cursor:pointer;
+  display:flex;align-items:center;gap:14px;padding:14px 12px 14px 14px;min-height:84px;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+}
+.task:active{background:#FBFAF7}
+.task .tx{flex:1;min-width:0}
+.task .tt{font-size:17px;font-weight:800;line-height:1.25}
+.task .tl{font-size:15px;color:var(--ink2);margin-top:2px}
+.task .ts{font-size:15px;font-weight:700;margin-top:4px}
+.task .chev{color:var(--ink2)}
+.nav{display:flex;margin:0 calc(-1 * var(--gx));border-top:1px solid var(--line);padding-bottom:var(--sab);background:var(--card)}
+.nav button{
+  flex:1;appearance:none;border:0;background:none;cursor:pointer;min-height:60px;padding:8px 4px 6px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;
+  font-size:14px;font-weight:600;color:var(--ink2);position:relative;
+}
+.nav button[aria-current="page"]{color:var(--ink);font-weight:800}
+.nav button[aria-current="page"]::before{content:"";position:absolute;top:0;left:28%;right:28%;height:3px;border-radius:0 0 3px 3px;background:var(--yellow)}
+.nav .badge{position:absolute;top:6px;left:calc(50% + 6px);min-width:20px;height:20px;padding:0 5px;border-radius:999px;background:var(--yellow);color:var(--ink);font-size:12px;font-weight:800;line-height:20px;text-align:center}
+
+/* =========================================================
+   6. Pantalla 3 · Detalle de tarea
+   ========================================================= */
+.dmeta{font-size:16px;color:var(--ink2);margin-top:8px}
+.steps{display:flex;margin:22px 0 4px;list-style:none;padding:0}
+.steps li{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;font-size:14px;font-weight:600;color:var(--ink2);text-align:center}
+.steps li::before{content:"";position:absolute;top:15px;left:-50%;width:100%;height:3px;background:var(--line);z-index:0}
+.steps li:first-child::before{display:none}
+.steps li.done::before,.steps li.cur::before{background:var(--green)}
+.steps .dot{position:relative;z-index:1;width:32px;height:32px;border-radius:999px;border:2px solid var(--line);background:var(--card);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;color:var(--ink2)}
+.steps li.done .dot{background:var(--green);border-color:var(--green);color:#fff}
+.steps li.cur .dot{background:var(--yellow);border-color:var(--ink);color:var(--ink)}
+.steps li.cur{color:var(--ink);font-weight:800}
+.check{padding:6px 16px 8px;margin-top:18px}
+.check h2{font-size:17px;font-weight:800;padding:12px 0 6px;display:flex;justify-content:space-between;gap:8px}
+.check h2 span{font-weight:700;color:var(--ink2);font-size:15px}
+.citem{display:flex;align-items:center;gap:14px;min-height:56px;font-size:17px;font-weight:600;cursor:pointer;border-top:1px solid var(--line)}
+.citem:first-of-type{border-top:0}
+.note{display:flex;gap:12px;align-items:flex-start;padding:14px 16px;margin-top:14px;font-size:16px}
+
+/* =========================================================
+   7. Pantalla 4 · Evidencia
+   ========================================================= */
+.htitle{flex:1;min-width:0;font-size:18px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.photo{
+  position:relative;height:330px;border-radius:var(--r-card);overflow:hidden;
+  background:#22262E;color:#C9CDD6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
+}
+.photo .grid{position:absolute;inset:0;pointer-events:none;
+  background:
+   linear-gradient(to right,transparent calc(33.333% - 1px),rgba(255,255,255,.18) calc(33.333% - 1px),rgba(255,255,255,.18) 33.333%,transparent 33.333%,transparent calc(66.666% - 1px),rgba(255,255,255,.18) calc(66.666% - 1px),rgba(255,255,255,.18) 66.666%,transparent 66.666%),
+   linear-gradient(to bottom,transparent calc(33.333% - 1px),rgba(255,255,255,.18) calc(33.333% - 1px),rgba(255,255,255,.18) 33.333%,transparent 33.333%,transparent calc(66.666% - 1px),rgba(255,255,255,.18) calc(66.666% - 1px),rgba(255,255,255,.18) 66.666%,transparent 66.666%);
+}
+.photo p{font-size:16px;position:relative}
+.photo .pill{position:absolute;left:12px;bottom:12px;background:rgba(0,0,0,.6);color:#fff;border-radius:999px;padding:6px 12px;font-size:15px;font-weight:700}
+.saved{padding:4px 16px;margin-top:14px}
+.saved .row{display:flex;gap:12px;align-items:flex-start;padding:12px 0;font-size:16px;color:var(--ink2)}
+.saved .row + .row{border-top:1px solid var(--line)}
+.saved b{color:var(--ink)}
+.queue{display:flex;flex-direction:column;gap:8px}
+.qrow{display:flex;gap:12px;align-items:center;padding:12px 14px;min-height:64px}
+.qrow .tx{flex:1;min-width:0}
+.qrow .tt{font-size:16px;font-weight:800}
+.qrow .tl{font-size:15px;color:var(--ink2)}
+.empty{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;padding:28px 16px;color:var(--ink2)}
+.empty b{color:var(--ink);font-size:17px}
+
+/* =========================================================
+   8. Pantalla 5 · Reportar incidente
+   ========================================================= */
+.types{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.type{
+  appearance:none;cursor:pointer;height:112px;border-radius:var(--r-card);
+  border:2px solid var(--line);background:var(--card);color:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:8px;
+  font-size:16px;font-weight:800;line-height:1.2;text-align:center;
+}
+.type .ic{color:var(--red)}
+.type[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.type[aria-pressed="true"] .ic{color:var(--yellow)}
+.addphoto{margin-top:14px}
+.addphoto.ok{border-color:var(--green);color:var(--green)}
+.switchrow{
+  appearance:none;width:100%;cursor:pointer;text-align:left;margin-top:14px;
+  display:flex;align-items:center;gap:14px;padding:14px 16px;min-height:72px;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+}
+.switchrow .tx{flex:1}
+.switchrow b{display:block;font-size:17px;font-weight:800}
+.switchrow span{font-size:15px;color:var(--ink2)}
+.sw{flex:none;width:56px;height:32px;border-radius:999px;background:#9AA0AC;position:relative;transition:background .15s}
+.sw::after{content:"";position:absolute;top:3px;left:3px;width:26px;height:26px;border-radius:999px;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:transform .15s}
+[aria-checked="true"] .sw{background:var(--green)}
+[aria-checked="true"] .sw::after{transform:translateX(24px)}
+
+/* =========================================================
+   9. Pantalla 6 · Panel del supervisor
+   ========================================================= */
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.kpi{padding:12px 10px;min-height:88px}
+.kpi b{display:block;font-size:26px;font-weight:800;line-height:1.1}
+.kpi span{display:block;font-size:14px;color:var(--ink2);margin-top:4px;line-height:1.2}
+.kpi.amber b{color:var(--amber-ink)} .kpi.red b{color:var(--red)}
+.alert{display:flex;gap:12px;align-items:center;background:var(--red-bg);color:var(--red-ink);border-radius:var(--r-card);padding:14px 14px 14px 16px;margin-top:14px;border:1px solid #F4C7C1}
+.alert .tx{flex:1;min-width:0;font-size:15px}
+.alert b{display:block;font-size:17px;font-weight:800}
+.alert .act{appearance:none;border:0;cursor:pointer;min-height:48px;padding:0 16px;border-radius:14px;background:var(--red);color:#fff;font-weight:800;font-size:16px}
+.vrow{display:flex;gap:12px;align-items:center;padding:12px}
+.thumb{width:56px;height:56px;border-radius:12px;background:#22262E;color:#C9CDD6;display:flex;align-items:center;justify-content:center;flex:none}
+.vrow .tx{flex:1;min-width:0}
+.vrow .tt{font-size:16px;font-weight:800;line-height:1.25}
+.vrow .tl{font-size:15px;color:var(--ink2)}
+.vbtn{appearance:none;cursor:pointer;width:48px;height:48px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex:none;padding:0}
+.vbtn.ok{background:var(--green);color:#fff;border:0}
+.vbtn.no{background:var(--card);color:var(--ink);border:2px solid var(--ink)}
+.crew{padding:6px 16px}
+.crow{padding:12px 0}
+.crow + .crow{border-top:1px solid var(--line)}
+.crow .lbl{display:flex;justify-content:space-between;gap:8px;font-size:16px;font-weight:600;margin-bottom:8px}
+.crow .lbl b{font-weight:800}
+
+/* =========================================================
+   10. Panel inferior (política), aviso breve y punto de prueba
+   ========================================================= */
+.backdrop{position:absolute;inset:0;background:rgba(21,24,29,.45);z-index:40;animation:inFade .16s ease-out}
+.sheet{
+  position:absolute;left:0;right:0;bottom:0;z-index:41;background:var(--card);
+  border-radius:22px 22px 0 0;padding:10px calc(20px + var(--sar)) calc(16px + var(--sab)) calc(20px + var(--sal));
+  max-height:85%;overflow:auto;animation:sheetIn .2s ease-out;
+}
+@keyframes sheetIn{from{transform:translateY(30px);opacity:0}to{transform:none;opacity:1}}
+.grab{width:44px;height:5px;border-radius:9px;background:var(--line);margin:0 auto 14px}
+.sheet h2{font-size:22px;font-weight:800;margin-bottom:12px}
+.sheet ol{margin:0 0 18px;padding-left:22px;font-size:16px;color:var(--ink2);display:flex;flex-direction:column;gap:10px}
+.sheet li::marker{color:var(--ink);font-weight:800}
+
+#toast{
+  position:absolute;left:16px;right:16px;z-index:50;display:flex;gap:10px;align-items:center;
+  background:var(--ink);color:#fff;border-radius:14px;padding:14px 16px;font-size:16px;font-weight:700;
+  box-shadow:0 8px 24px rgba(21,24,29,.25);opacity:0;transform:translateY(8px);pointer-events:none;
+  transition:opacity .16s ease,transform .16s ease;
+}
+#toast.show{opacity:1;transform:none}
+#toast .ic{color:var(--yellow)}
+#toast.ok .ic{color:#7FD3A0}
+#toast.warn{background:var(--warn-bg);color:var(--warn-ink);border:1px solid #F0D98A}
+#toast.warn .ic{color:var(--amber-ink)}
+
+#sdot{position:absolute;top:calc(var(--sat) + 3px);right:calc(var(--sar) + 3px);width:8px;height:8px;border-radius:50%;background:rgba(75,81,96,.45);z-index:60;display:none;pointer-events:none}
+#sdot.on{display:block}
+#sdot.done{background:rgba(30,123,69,.75)}
+.corner{position:absolute;top:var(--sat);right:var(--sar);width:44px;height:44px;z-index:5;-webkit-touch-callout:none}
+
+/* =========================================================
+   11. Modo encuestador (solo lo ve quien aplica la encuesta)
+   ========================================================= */
+#survey{
+  position:fixed;inset:0;z-index:100;background:#0F1115;color:#EDECE7;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  font-size:15px;-webkit-user-select:text;user-select:text;
+}
+#survey[hidden]{display:none}
+#survey .wrap{max-width:430px;margin:0 auto;padding:calc(var(--sat) + 12px) calc(16px + var(--sar)) calc(28px + var(--sab)) calc(16px + var(--sal))}
+#survey .shead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px}
+#survey h2{font-size:20px;font-weight:800}
+#survey h3{font-size:13px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#A9AEB8;margin:22px 0 8px}
+#survey .box{background:#1B1F26;border:1px solid #2B313B;border-radius:14px;padding:12px}
+#survey .muted{color:#A9AEB8;font-size:14px}
+#survey .sbtn{
+  appearance:none;border:1px solid #3A414D;background:#262B34;color:#F4F3EF;cursor:pointer;
+  min-height:48px;padding:0 14px;border-radius:12px;font-weight:700;font-size:15px;
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;
+}
+#survey .sbtn.pri{background:var(--yellow);border-color:var(--yellow);color:var(--ink)}
+#survey .sbtn.go{background:#1E7B45;border-color:#1E7B45;color:#fff}
+#survey .sbtn.bad{background:#7A1A12;border-color:#B42318;color:#fff}
+#survey .sbtn[aria-pressed="true"]{background:#F4F3EF;color:var(--ink);border-color:#F4F3EF}
+#survey .sbtn.dim{opacity:.45}
+#survey .full{width:100%}
+#survey .row{display:flex;gap:8px;flex-wrap:wrap}
+#survey .row > .sbtn{flex:1 1 0;min-width:0}
+#survey input[type=text]{
+  width:100%;min-height:48px;border-radius:12px;border:1px solid #3A414D;background:#0F1115;color:#fff;
+  padding:0 14px;font-size:18px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;
+}
+#survey .live{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0}
+#survey .live div{background:#0F1115;border-radius:10px;padding:8px 10px}
+#survey .live b{display:block;font-size:22px;font-variant-numeric:tabular-nums}
+#survey .live span{font-size:12px;color:#A9AEB8}
+#survey .test{display:flex;gap:10px;align-items:center;padding:10px 0;border-top:1px solid #2B313B}
+#survey .test:first-child{border-top:0;padding-top:0}
+#survey .test .tx{flex:1;min-width:0}
+#survey .test b{font-size:15px}
+#survey .test p{font-size:14px;color:#C9CDD6}
+#survey .saved-v{font-size:13px;color:#7FD3A0;margin-top:2px}
+#survey table{width:100%;border-collapse:collapse;font-size:13px;font-variant-numeric:tabular-nums}
+#survey th,#survey td{padding:6px 4px;border-bottom:1px solid #2B313B;text-align:center}
+#survey th:first-child,#survey td:first-child{text-align:left}
+#survey textarea{width:100%;min-height:110px;margin-top:8px;border-radius:10px;border:1px solid #3A414D;background:#0F1115;color:#EDECE7;font:12px/1.4 ui-monospace,Menlo,Consolas,monospace;padding:8px}
+#survey .log{margin:8px 0 0;padding-left:18px;font-size:13px;color:#C9CDD6;max-height:120px;overflow:auto}
+#survey .msg{min-height:20px;font-size:14px;color:#F2B705;margin-top:8px}
+#survey .tag{display:inline-block;font-size:12px;font-weight:800;padding:2px 8px;border-radius:999px;background:#2B313B;color:#EDECE7}
+#survey .tag.done{background:#1E7B45;color:#fff}
+</style>
+</head>
+<body>
+<div id="app">
+  <main id="view"></main>
+  <div class="corner" data-logo aria-hidden="true"></div>
+  <div id="sheet-root"></div>
+  <div id="toast" role="status" aria-live="polite"></div>
+  <div id="sdot" aria-hidden="true"></div>
+</div>
+<div id="survey" hidden role="dialog" aria-modal="true" aria-label="Modo encuestador"></div>
+
+<script>
+'use strict';
+(function(){
+
+/* =========================================================
+   A. Íconos SVG en línea (estilo Lucide, stroke-width 2)
+   ========================================================= */
+const ICONS = {
+  shield:'<path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/>',
+  camera:'<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',
+  pin:'<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+  eyeoff:'<path d="M10.733 5.076a10.744 10.744 0 0 1 11.205 6.575 1 1 0 0 1 0 .696 10.747 10.747 0 0 1-1.444 2.49"/><path d="M14.084 14.158a3 3 0 0 1-4.242-4.242"/><path d="M17.479 17.499a10.75 10.75 0 0 1-15.417-5.151 1 1 0 0 1 0-.696 10.75 10.75 0 0 1 4.446-5.143"/><path d="m2 2 20 20"/>',
+  wifioff:'<path d="M12 20h.01"/><path d="M8.5 16.429a5 5 0 0 1 7 0"/><path d="M5 12.859a10 10 0 0 1 5.17-2.69"/><path d="M19 12.859a10 10 0 0 0-2.007-1.523"/><path d="M2 8.82a15 15 0 0 1 4.177-2.643"/><path d="M22 8.82a15 15 0 0 0-11.288-3.764"/><path d="m2 2 20 20"/>',
+  wrench:'<path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>',
+  refresh:'<path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/>',
+  check:'<path d="M20 6 9 17l-5-5"/>',
+  checkcircle:'<circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>',
+  chevron:'<path d="m9 18 6-6-6-6"/>',
+  back:'<path d="m12 19-7-7 7-7"/><path d="M19 12H5"/>',
+  triangle:'<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/>',
+  list:'<path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/>',
+  upload:'<path d="M12 13v8"/><path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/><path d="m8 17 4-4 4 4"/>',
+  user:'<path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+  image:'<rect width="18" height="18" x="3" y="3" rx="2" ry="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21"/>',
+  x:'<path d="M18 6 6 18"/><path d="m6 6 12 12"/>',
+  hardhat:'<path d="M10 10V5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v5"/><path d="M14 6a6 6 0 0 1 6 6v3"/><path d="M4 15v-3a6 6 0 0 1 6-6"/><rect x="2" y="15" width="20" height="4" rx="1"/>',
+  fall:'<path d="M12 17V3"/><path d="m6 11 6 6 6-6"/><path d="M19 21H5"/>',
+  box:'<path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><path d="m3.3 7 7.703 4.734a2 2 0 0 0 1.994 0L20.7 7"/><path d="m7.5 4.27 9 5.15"/>',
+  hammer:'<path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.202-1.756L9 2.96l.92.82A6.18 6.18 0 0 1 12 8.4V10l2 2h1.172a2 2 0 0 1 1.414.586L18.5 14.5"/>',
+  help:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/>',
+  alert:'<circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><path d="M12 16h.01"/>',
+  inbox:'<path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.45 5.11 2 12v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6l-3.45-6.89A2 2 0 0 0 16.76 4H7.24a2 2 0 0 0-1.79 1.11z"/>',
+  phone:'<rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>'
+};
+function icon(name, size){
+  size = size || 24;
+  return '<svg class="ic" width="'+size+'" height="'+size+'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">'+ICONS[name]+'</svg>';
+}
+function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+function nowHM(){ const d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); }
+
+/* =========================================================
+   B. Estado de la app (todo vive aquí; reiniciar = valores por defecto)
+   ========================================================= */
+const STATUS = {
+  todo:   {label:'Por hacer',          icon:'wrench',  tile:'tile-blue',  txt:'st-blue',  chip:'chip-blue'},
+  pending:{label:'Pendiente de envío', icon:'refresh', tile:'tile-amber', txt:'st-amber', chip:'chip-amber'},
+  done:   {label:'Completada',         icon:'check',   tile:'tile-green', txt:'st-green', chip:'chip-green'}
+};
+const INCIDENT_TYPES = [
+  {id:'caida',    label:'Riesgo de caída', icon:'fall'},
+  {id:'material', label:'Material suelto', icon:'box'},
+  {id:'equipo',   label:'Equipo dañado',   icon:'hammer'},
+  {id:'otro',     label:'Otro riesgo',     icon:'help'}
+];
+function defaultState(){
+  return {
+    role:'worker',              // 'worker' | 'supervisor'
+    consented:false,            // ya aceptó el consentimiento
+    consentChecked:false,       // casilla del consentimiento
+    tasks:[
+      {id:'t1', title:'Instalar moldaje losa', place:'Piso 3', axis:'Eje B-C', status:'todo',
+       checklist:['Paneles nivelados','Puntales firmes','Área despejada'], checks:[false,false,false],
+       safety:'Usa arnés: trabajo sobre 1,8 m de altura.'},
+      {id:'t2', title:'Revisar alzaprimas', place:'Piso 3', axis:'Eje A', status:'pending', savedAt:'09:35',
+       checklist:['Alzaprimas aplomadas','Bases firmes','Área despejada'], checks:[true,true,true],
+       safety:'Usa casco y guantes durante la revisión.'},
+      {id:'t3', title:'Limpieza de área de trabajo', place:'Piso 3', axis:'Acceso norte', status:'done',
+       checklist:['Escombros retirados','Herramientas guardadas','Acceso despejado'], checks:[true,true,true],
+       safety:'Usa guantes y zapatos de seguridad.'}
+    ],
+    incidents:[],               // reportes guardados en el celular, pendientes de envío
+    lastEvidence:null,          // {taskId, time}
+    draftTime:null,             // hora de la foto en curso
+    incident:{type:null, photo:false, anon:true},
+    sup:{closed:14, total:21, toVerify:2, alert:'new', verify:null}
+  };
+}
+let state = defaultState();
+const task = function(id){ return state.tasks.find(function(t){ return t.id===id; }); };
+const pendingCount = function(){ return state.tasks.filter(function(t){ return t.status==='pending'; }).length + state.incidents.length; };
+
+/* =========================================================
+   C. Navegación por estado + historial del navegador
+   ========================================================= */
+const view = document.getElementById('view');
+const app = document.getElementById('app');
+const reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const nav = { stack:[], pendingRoot:null, hist:true };
+let cur = {screen:'consent', params:{}, idx:0};
+
+function rootEntry(){
+  if (state.role==='supervisor') return {screen:'supervisor', params:{}};
+  return state.consented ? {screen:'tasks', params:{}} : {screen:'consent', params:{}};
+}
+function pushHist(entry, replace){
+  if (!nav.hist) return;
+  try { history[replace?'replaceState':'pushState'](entry, ''); } catch(e){ nav.hist=false; }
+}
+function go(screen, params){
+  const entry = {screen:screen, params:params||{}, idx:nav.stack.length};
+  nav.stack.push(entry); pushHist(entry, false); show(entry, 'fwd');
+}
+function replaceTop(screen, params){
+  const idx = Math.max(0, nav.stack.length-1);
+  const entry = {screen:screen, params:params||{}, idx:idx};
+  nav.stack[idx] = entry; pushHist(entry, true); show(entry, 'fade');
+}
+function back(){
+  if (nav.stack.length<=1) return;
+  if (nav.hist) { history.back(); return; }
+  nav.stack.pop(); show(nav.stack[nav.stack.length-1], 'back');
+}
+/* Vuelve a la pantalla raíz (vacía la pila del historial) y luego ejecuta "after" */
+function toRoot(entry, after){
+  nav.pendingRoot = {entry:entry, after:after};
+  const n = nav.stack.length-1;
+  if (n>0 && nav.hist) { history.go(-n); } else { finishRoot(); }
+}
+function finishRoot(){
+  const p = nav.pendingRoot; nav.pendingRoot = null; if (!p) return;
+  const entry = {screen:p.entry.screen, params:p.entry.params||{}, idx:0};
+  nav.stack = [entry]; pushHist(entry, true); show(entry, 'fade');
+  if (p.after) p.after();
+}
+function home(msg, kind){ toRoot(rootEntry(), msg ? function(){ toast(msg, kind); } : null); }
+window.addEventListener('popstate', function(e){
+  if (nav.pendingRoot) { finishRoot(); return; }
+  const st = e.state;
+  if (!st || typeof st.idx!=='number' || !SCREENS[st.screen]) { const r=rootEntry(); nav.stack=[{screen:r.screen,params:{},idx:0}]; pushHist(nav.stack[0], true); show(nav.stack[0], 'back'); return; }
+  const dir = st.idx < cur.idx ? 'back' : 'fwd';
+  nav.stack.length = st.idx; nav.stack[st.idx] = st;
+  show(st, dir);
+});
+
+/* Dibuja una pantalla completa */
+function show(entry, dir){
+  closeSheet(true);
+  cur = entry;
+  view.innerHTML = SCREENS[entry.screen](entry.params||{});
+  const scr = view.firstElementChild;
+  if (dir && !reduceMotion && scr) scr.classList.add('enter-'+dir);
+  const h = view.querySelector('[data-focus]');
+  if (h) { try { h.focus({preventScroll:true}); } catch(e){ h.focus(); } }
+}
+/* Redibuja la pantalla actual sin animación (conserva scroll y foco) */
+function refresh(){
+  const sc = view.querySelector('.scroll'); const top = sc ? sc.scrollTop : 0;
+  const ae = document.activeElement;
+  const key = ae && ae.dataset && ae.dataset.act ? [ae.dataset.act, ae.dataset.arg||''] : null;
+  view.innerHTML = SCREENS[cur.screen](cur.params||{});
+  const sc2 = view.querySelector('.scroll'); if (sc2) sc2.scrollTop = top;
+  if (key) {
+    const el = view.querySelector('[data-act="'+key[0]+'"]'+(key[1]?'[data-arg="'+key[1]+'"]':''));
+    if (el) { try { el.focus({preventScroll:true}); } catch(e){} }
+  }
+}
+
+/* =========================================================
+   D. Pantallas (una función render por pantalla)
+   ========================================================= */
+function brandBar(right){
+  return '<header class="top"><span class="brand" data-logo>SITO</span>'+(right?'<div class="meta">'+right+'</div>':'')+'</header>';
+}
+function backBar(title){
+  return '<header class="top" style="justify-content:flex-start"><button class="iconbtn" data-act="back" aria-label="Volver">'+icon('back')+'</button>'+(title?'<div class="htitle">'+esc(title)+'</div>':'')+'</header>';
+}
+function bottomNav(active){
+  const n = pendingCount();
+  const item = function(id, label, ic){
+    return '<button data-act="nav" data-arg="'+id+'"'+(active===id?' aria-current="page"':'')+'>'+icon(ic,24)+
+      (id==='pending' && n ? '<span class="badge" aria-hidden="true">'+n+'</span>' : '')+
+      '<span>'+label+(id==='pending' && n ? '<span style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)"> ('+n+')</span>' : '')+'</span></button>';
+  };
+  return '<nav class="nav" aria-label="Secciones">'+item('tasks','Tareas','list')+item('pending','Por enviar','upload')+item('profile','Mi perfil','user')+'</nav>';
+}
+function offlineBanner(){
+  const n = pendingCount();
+  const txt = n===0 ? 'Todo lo que hagas se guarda en tu celular y se envía solo al volver la conexión.'
+    : n===1 ? '1 registro se enviará solo al volver la conexión.'
+    : n+' registros se enviarán solos al volver la conexión.';
+  return '<div class="offline" role="status">'+icon('wifioff',22)+'<p><b>Sin señal.</b> '+txt+'</p></div>';
+}
+
+const SCREENS = {
+
+  /* 1 · Consentimiento */
+  consent: function(){
+    const ok = state.consentChecked;
+    return '<section class="screen">'+brandBar('')+
+    '<div class="scroll">'+
+      '<div class="shield">'+icon('shield',34)+'</div>'+
+      '<h1 class="h1" tabindex="-1" data-focus>Tus datos, claros desde el inicio</h1>'+
+      '<p class="sub">Antes de empezar, revisa qué guarda SITO y para qué.</p>'+
+      '<div class="card pcard"><div class="pi">'+icon('camera')+'</div><p><b>Fotos de tus tareas.</b>Solo como evidencia del trabajo hecho, no para controlarte.</p></div>'+
+      '<div class="card pcard"><div class="pi">'+icon('pin')+'</div><p><b>Ubicación solo de la obra.</b>Nunca seguimos tu recorrido.</p></div>'+
+      '<div class="card pcard"><div class="pi">'+icon('eyeoff')+'</div><p><b>Incidentes anónimos.</b>Puedes reportar un riesgo sin tu nombre.</p></div>'+
+    '</div>'+
+    '<footer class="foot">'+
+      '<label class="agree" data-act="consent-check"><input type="checkbox" class="cbx" data-change="consent-check"'+(ok?' checked':'')+'><span>Leí y acepto el uso de mis datos según la Ley N° 21.719.</span></label>'+
+      '<button class="btn btn-primary" data-act="consent-accept" aria-disabled="'+(!ok)+'">Aceptar y comenzar</button>'+
+      '<a href="#politica" class="link" data-act="policy-open">Ver política completa</a>'+
+    '</footer></section>';
+  },
+
+  /* 2 · Mis tareas de hoy */
+  tasks: function(){
+    const total = state.tasks.length;
+    const doneN = state.tasks.filter(function(t){ return t.status!=='todo'; }).length;
+    const pct = Math.round(doneN/total*100);
+    const cards = state.tasks.map(function(t){
+      const s = STATUS[t.status];
+      return '<button class="task" data-act="open-task" data-arg="'+t.id+'" aria-label="'+esc(t.title+'. '+t.place+' · '+t.axis+'. '+s.label)+'">'+
+        '<span class="tile '+s.tile+'">'+icon(s.icon,26)+'</span>'+
+        '<span class="tx"><span class="tt" style="display:block">'+esc(t.title)+'</span>'+
+        '<span class="tl" style="display:block">'+esc(t.place+' · '+t.axis)+'</span>'+
+        '<span class="ts '+s.txt+'" style="display:block">'+s.label+'</span></span>'+
+        '<span class="chev">'+icon('chevron',22)+'</span></button>';
+    }).join('');
+    return '<section class="screen">'+brandBar('Obra <b>Torre Norte</b> · Piso 3')+
+    '<div class="scroll">'+
+      offlineBanner()+
+      '<p class="hello">Hola, Pedro</p>'+
+      '<h1 class="h1" tabindex="-1" data-focus>Tus tareas de hoy</h1>'+
+      '<div class="progress"><div class="bar" role="progressbar" aria-valuemin="0" aria-valuemax="'+total+'" aria-valuenow="'+doneN+'" aria-label="Tareas completadas"><i style="width:'+pct+'%"></i></div>'+
+      '<div class="prow"><span><b>'+doneN+' de '+total+'</b> completadas</span><span>Cuadrilla 2 · Moldaje</span></div></div>'+
+      '<div class="tasks">'+cards+'</div>'+
+    '</div>'+
+    '<footer class="foot has-nav">'+
+      '<button class="btn btn-danger" data-act="incident-open">'+icon('triangle')+'Reportar incidente</button>'+
+      bottomNav('tasks')+
+    '</footer></section>';
+  },
+
+  /* 3 · Detalle de tarea */
+  detail: function(p){
+    const t = task(p.id) || state.tasks[0];
+    const s = STATUS[t.status];
+    const curStep = t.status==='todo' ? 1 : t.status==='pending' ? 2 : 3;
+    const steps = ['Asignada','En curso','Verificada'].map(function(l,i){
+      const cls = i<curStep ? 'done' : i===curStep ? 'cur' : '';
+      return '<li class="'+cls+'"'+(i===curStep?' aria-current="step"':'')+'><span class="dot">'+(i<curStep?icon('check',18):(i+1))+'</span>'+l+'</li>';
+    }).join('');
+    const editable = t.status==='todo';
+    const nChecked = t.checks.filter(Boolean).length;
+    const items = t.checklist.map(function(c,i){
+      return '<label class="citem" data-act="check" data-arg="'+i+'"><input type="checkbox" class="cbx lg" data-change="check" data-arg="'+i+'"'+(t.checks[i]?' checked':'')+(editable?'':' disabled')+'><span>'+esc(c)+'</span></label>';
+    }).join('');
+    let note = '';
+    if (t.status==='pending') note = '<div class="card note">'+icon('refresh',22)+'<p>Ya terminaste esta tarea. <b>Se enviará sola</b> al volver la señal.</p></div>';
+    if (t.status==='done') note = '<div class="card note"><span class="st-green">'+icon('checkcircle',22)+'</span><p>Tarea completada y enviada.</p></div>';
+    return '<section class="screen">'+backBar('')+
+    '<div class="scroll">'+
+      '<span class="chip '+s.chip+'">'+s.label+'</span>'+
+      '<h1 class="h1" style="margin-top:10px" tabindex="-1" data-focus>'+esc(t.title)+'</h1>'+
+      '<p class="dmeta">'+esc(t.place+' · '+t.axis)+' · Asignada por J. Muñoz, 08:10</p>'+
+      '<ol class="steps" aria-label="Estado de la tarea">'+steps+'</ol>'+
+      '<div class="card check"><h2>Antes de terminar, revisa:<span id="ccount">'+nChecked+' de '+t.checklist.length+'</span></h2>'+items+'</div>'+
+      '<div class="warn">'+icon('hardhat',22)+'<p>'+esc(t.safety)+'</p></div>'+
+      note+
+    '</div>'+
+    '<footer class="foot">'+
+      (editable ? '<button class="btn btn-primary" data-act="finish-photo">'+icon('camera')+'Tomar foto y terminar</button>' : '')+
+      '<button class="btn btn-outline" data-act="problem">Tengo un problema</button>'+
+    '</footer></section>';
+  },
+
+  /* 4 · Evidencia y envío offline (también vista "Por enviar") */
+  evidence: function(p){
+    if (p.review) return renderPending();
+    const t = task(p.id) || state.tasks[0];
+    if (t.status!=='todo') return SCREENS.detail({id:t.id});
+    const time = state.draftTime || nowHM();
+    return '<section class="screen">'+backBar(t.title)+
+    '<div class="scroll">'+
+      '<h1 class="h1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)" tabindex="-1" data-focus>Evidencia: '+esc(t.title)+'</h1>'+
+      photoBox(time)+
+      savedCard()+
+    '</div>'+
+    '<footer class="foot">'+
+      '<button class="btn btn-primary" data-act="finish-task">'+icon('check')+'Terminar tarea</button>'+
+      '<button class="btn btn-outline" data-act="retake">'+icon('camera')+'Repetir foto</button>'+
+    '</footer></section>';
+  },
+
+  /* 5 · Reportar incidente */
+  incident: function(){
+    const inc = state.incident;
+    const types = INCIDENT_TYPES.map(function(k){
+      return '<button class="type" data-act="inc-type" data-arg="'+k.id+'" aria-pressed="'+(inc.type===k.id)+'">'+icon(k.icon,30)+k.label+'</button>';
+    }).join('');
+    return '<section class="screen">'+backBar('')+
+    '<div class="scroll">'+
+      '<h1 class="h1" tabindex="-1" data-focus>¿Qué pasó?</h1>'+
+      '<p class="sub">Toca una opción. Tu jefe de obra lo recibe al instante.</p>'+
+      '<div class="types" role="group" aria-label="Tipo de incidente">'+types+'</div>'+
+      (inc.photo
+        ? '<button class="btn btn-outline addphoto ok" data-act="inc-photo">'+icon('check')+'Foto agregada ✓</button>'
+        : '<button class="btn btn-outline addphoto" data-act="inc-photo">'+icon('camera')+'Agregar foto (opcional)</button>')+
+      '<button class="switchrow" role="switch" aria-checked="'+inc.anon+'" data-act="inc-anon"><span class="tx"><b>Reportar sin mi nombre</b><span>Nadie verá quién lo envió</span></span><span class="sw" aria-hidden="true"></span></button>'+
+    '</div>'+
+    '<footer class="foot">'+
+      '<button class="btn btn-danger" data-act="inc-send" aria-disabled="'+(!inc.type)+'">'+icon('triangle')+'Enviar reporte</button>'+
+      '<p class="small center">Sin señal también funciona: se envía apenas haya conexión.</p>'+
+    '</footer></section>';
+  },
+
+  /* 6 · Panel del supervisor */
+  supervisor: function(){
+    const s = state.sup;
+    const alertBtn = s.alert==='new'
+      ? '<button class="act" data-act="sup-attend">Atender</button>'
+      : '<span class="chip chip-green">En atención</span>';
+    let vr;
+    if (!s.verify) {
+      vr = '<button class="vbtn ok" data-act="sup-ok" aria-label="Aprobar tarea">'+icon('check')+'</button>'+
+           '<button class="vbtn no" data-act="sup-fix" aria-label="Pedir corrección">'+icon('x')+'</button>';
+    } else {
+      vr = s.verify==='ok' ? '<span class="chip chip-green">Verificada</span>' : '<span class="chip chip-amber">Corrección pedida</span>';
+    }
+    const crews = [['Cuadrilla 1 · Enfierradura',80],['Cuadrilla 2 · Moldaje',60],['Cuadrilla 3 · Terminaciones',45]].map(function(c){
+      return '<div class="crow"><div class="lbl"><span>'+c[0]+'</span><b>'+c[1]+'%</b></div><div class="bar" role="progressbar" aria-label="'+c[0]+'" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+c[1]+'"><i style="width:'+c[1]+'%"></i></div></div>';
+    }).join('');
+    return '<section class="screen">'+brandBar('Supervisor · <b>Torre Norte</b>')+
+    '<div class="scroll">'+
+      '<h1 class="h1" style="margin-top:4px" tabindex="-1" data-focus>Avance de hoy</h1>'+
+      '<div class="kpis">'+
+        '<div class="card kpi"><b>'+s.closed+'/'+s.total+'</b><span>Tareas cerradas</span></div>'+
+        '<div class="card kpi amber"><b>'+s.toVerify+'</b><span>Por verificar</span></div>'+
+        '<div class="card kpi red"><b>1</b><span>Incidente</span></div>'+
+      '</div>'+
+      '<div class="alert" role="alert">'+icon('triangle',26)+'<div class="tx"><b>Riesgo de caída · Piso 3</b>Anónimo · hace 4 min</div>'+alertBtn+'</div>'+
+      '<h2 class="section-t">Por verificar</h2>'+
+      '<div class="card vrow"><div class="thumb">'+icon('image',24)+'</div><div class="tx"><div class="tt">Instalar moldaje losa</div><div class="tl">Pedro R. · 11:42</div></div>'+vr+'</div>'+
+      '<h2 class="section-t">Avance por cuadrilla</h2>'+
+      '<div class="card crew">'+crews+'</div>'+
+    '</div></section>';
+  }
+};
+
+function photoBox(time){
+  return '<div class="photo" role="img" aria-label="Foto de la tarea terminada, 10 nov, '+time+', Piso 3"><div class="grid"></div>'+icon('image',48)+'<p>[Foto de la tarea terminada]</p><span class="pill">10 nov · '+time+' · Piso 3</span></div>';
+}
+function savedCard(){
+  return '<div class="card saved">'+
+    '<div class="row"><span class="st-green">'+icon('checkcircle',22)+'</span><p><b>Guardada en tu celular</b> · 290 KB</p></div>'+
+    '<div class="row"><span class="st-amber">'+icon('refresh',22)+'</span><p><b>Se enviará sola</b> al volver la señal. No necesitas hacer nada más.</p></div></div>';
+}
+/* Vista "Por enviar" (pantalla 4 en modo revisión) */
+function renderPending(){
+  const ev = state.lastEvidence;
+  const lt = ev ? task(ev.taskId) : null;
+  let top;
+  if (ev && lt) {
+    top = '<p class="small" style="margin:14px 0 8px">Última foto · <b style="color:var(--ink)">'+esc(lt.title)+'</b></p>'+photoBox(ev.time)+savedCard();
+  } else {
+    top = '<div class="card empty" style="margin-top:14px">'+icon('inbox',36)+'<b>No hay fotos nuevas</b><p>Cuando termines una tarea con foto, aparecerá aquí.</p></div>';
+  }
+  const rows = state.tasks.filter(function(t){ return t.status==='pending'; }).map(function(t){
+    const time = (ev && ev.taskId===t.id) ? ev.time : (t.savedAt || '');
+    return '<div class="card qrow"><span class="tile tile-amber">'+icon('refresh',24)+'</span><div class="tx"><div class="tt">'+esc(t.title)+'</div><div class="tl">Tarea con foto'+(time?' · '+time:'')+'</div></div></div>';
+  }).concat(state.incidents.map(function(i){
+    const k = INCIDENT_TYPES.find(function(x){ return x.id===i.type; });
+    return '<div class="card qrow"><span class="tile" style="background:var(--red);color:#fff">'+icon('triangle',24)+'</span><div class="tx"><div class="tt">'+esc(k.label)+'</div><div class="tl">'+(i.anon?'Reporte anónimo':'Reporte con tu nombre')+' · '+i.time+'</div></div></div>';
+  })).join('');
+  return '<section class="screen">'+brandBar('Obra <b>Torre Norte</b> · Piso 3')+
+  '<div class="scroll">'+
+    offlineBanner()+
+    '<h1 class="h1" style="margin-top:16px" tabindex="-1" data-focus>Por enviar</h1>'+
+    top+
+    '<h2 class="section-t">En espera de señal ('+pendingCount()+')</h2>'+
+    (rows ? '<div class="queue">'+rows+'</div>' : '<p class="small">No hay registros pendientes.</p>')+
+  '</div>'+
+  '<footer class="foot has-nav">'+bottomNav('pending')+'</footer></section>';
+}
+
+/* =========================================================
+   E. Panel inferior de política y aviso breve (toast)
+   ========================================================= */
+const sheetRoot = document.getElementById('sheet-root');
+let sheetOpen = false, lastFocus = null;
+function openPolicy(){
+  lastFocus = document.activeElement;
+  sheetOpen = true;
+  sheetRoot.innerHTML =
+    '<div class="backdrop" data-act="policy-close" aria-hidden="true"></div>'+
+    '<div class="sheet" role="dialog" aria-modal="true" aria-labelledby="pol-t">'+
+      '<div class="grab" aria-hidden="true"></div>'+
+      '<h2 id="pol-t" tabindex="-1">Política de datos de SITO</h2>'+
+      '<ol>'+
+        '<li>SITO guarda la foto, el checklist y la hora de cierre de cada tarea, solo como evidencia del trabajo hecho.</li>'+
+        '<li>La ubicación se limita al perímetro de la obra. No se registra tu recorrido.</li>'+
+        '<li>Los reportes anónimos no guardan tu nombre ni tu número de teléfono.</li>'+
+        '<li>Puedes pedir ver, corregir o eliminar tus datos en cualquier momento, según la Ley N° 21.719.</li>'+
+      '</ol>'+
+      '<button class="btn btn-primary" data-act="policy-close">Cerrar</button>'+
+    '</div>';
+  const h = document.getElementById('pol-t'); if (h) h.focus();
+}
+function closeSheet(silent){
+  if (!sheetOpen) return;
+  sheetOpen = false; sheetRoot.innerHTML = '';
+  if (!silent && lastFocus && document.contains(lastFocus)) { try { lastFocus.focus({preventScroll:true}); } catch(e){} }
+}
+const toastEl = document.getElementById('toast');
+let toastTimer = null;
+function toast(msg, kind){
+  const f = view.querySelector('.foot');
+  toastEl.style.bottom = f ? (f.offsetHeight + 12) + 'px' : 'calc(16px + env(safe-area-inset-bottom, 0px))';
+  toastEl.className = '';
+  const ic = kind==='warn' ? 'alert' : 'checkcircle';
+  toastEl.innerHTML = icon(ic,22)+'<span>'+esc(msg)+'</span>';
+  if (kind) toastEl.classList.add(kind);
+  void toastEl.offsetWidth;
+  toastEl.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 2600);
+}
+
+/* =========================================================
+   F. Acciones de la interfaz (delegación de eventos)
+   ========================================================= */
+/* Pestañas inferiores: desde la raíz se apila; entre pestañas se reemplaza */
+function tabGo(screen, params){ if (cur.idx===0) go(screen, params); else replaceTop(screen, params); }
+function resetIncident(){ state.incident = {type:null, photo:false, anon:true}; }
+
+const actions = {
+  'consent-accept': function(){
+    if (!state.consentChecked) { toast('Marca la casilla para continuar', 'warn'); return; }
+    state.consented = true; home();
+  },
+  'policy-open': function(){ openPolicy(); },
+  'policy-close': function(){ closeSheet(); },
+  'open-task': function(id){ go('detail', {id:id}); },
+  'nav': function(where){
+    if (where==='tasks') { if (cur.screen!=='tasks') home(); }
+    else if (where==='pending') { if (!(cur.screen==='evidence' && cur.params.review)) tabGo('evidence', {review:true}); }
+    else if (where==='profile') { tabGo('consent', {profile:true}); }
+  },
+  'incident-open': function(){ resetIncident(); go('incident'); },
+  'problem': function(){ resetIncident(); go('incident'); },
+  'back': function(){ back(); },
+  'finish-photo': function(){
+    const t = task(cur.params.id);
+    if (!t.checks.every(Boolean)) { toast('Completa el checklist antes de terminar', 'warn'); return; }
+    state.draftTime = nowHM();
+    go('evidence', {id:t.id});
+  },
+  'finish-task': function(){
+    const t = task(cur.params.id);
+    if (!t || t.status!=='todo') return;
+    t.status = 'pending'; t.savedAt = state.draftTime || nowHM();
+    state.lastEvidence = {taskId:t.id, time:t.savedAt};
+    survey.detect('P1', t.id==='t1');
+    home('Tarea guardada', 'ok');
+  },
+  'retake': function(){ back(); },
+  'inc-type': function(k){ state.incident.type = k; refresh(); },
+  'inc-photo': function(){ state.incident.photo = true; refresh(); },
+  'inc-anon': function(){ state.incident.anon = !state.incident.anon; refresh(); },
+  'inc-send': function(){
+    const i = state.incident;
+    if (!i.type) { toast('Elige qué pasó antes de enviar', 'warn'); return; }
+    state.incidents.push({type:i.type, photo:i.photo, anon:i.anon, time:nowHM()});
+    survey.detect('P2', i.type==='caida' && i.anon);
+    home('Reporte guardado. Se enviará apenas haya señal', 'ok');
+  },
+  'sup-attend': function(){ state.sup.alert = 'attending'; refresh(); toast('Incidente en atención', 'ok'); },
+  'sup-ok': function(){
+    if (state.sup.verify) return;
+    state.sup.verify = 'ok'; state.sup.closed++; state.sup.toVerify--;
+    survey.detect('P4', true); refresh(); toast('Tarea verificada', 'ok');
+  },
+  'sup-fix': function(){
+    if (state.sup.verify) return;
+    state.sup.verify = 'fix'; state.sup.toVerify--;
+    survey.detect('P4', true); refresh(); toast('Corrección pedida');
+  }
+};
+const changes = {
+  'consent-check': function(el){
+    state.consentChecked = el.checked;
+    const b = view.querySelector('[data-act="consent-accept"]');
+    if (b) b.setAttribute('aria-disabled', String(!el.checked));
+  },
+  'check': function(el){
+    const t = task(cur.params.id); if (!t || t.status!=='todo') return;
+    t.checks[+el.dataset.arg] = el.checked;
+    const c = document.getElementById('ccount');
+    if (c) c.textContent = t.checks.filter(Boolean).length+' de '+t.checklist.length;
+  }
+};
+app.addEventListener('click', function(e){
+  const el = e.target.closest('[data-act]');
+  if (!el || el.tagName==='LABEL' || el.tagName==='INPUT') return;
+  if (el.tagName==='A') e.preventDefault();
+  const fn = actions[el.dataset.act];
+  if (fn) fn(el.dataset.arg, el);
+});
+app.addEventListener('change', function(e){
+  const el = e.target;
+  const fn = el.dataset && changes[el.dataset.change];
+  if (fn) fn(el);
+});
+document.addEventListener('keydown', function(e){
+  if (e.key==='Escape' && sheetOpen) closeSheet();
+  if (e.key==='E' && e.shiftKey && e.altKey) survey.open();   // atajo de escritorio
+});
+
+/* =========================================================
+   G. Modo encuestador (toque largo de 2 s sobre "SITO")
+   ========================================================= */
+const survey = (function(){
+  const KEY = 'sito_encuesta_v1';
+  const TESTS = {
+    P1:{who:'Trabajador', text:'Cierre la tarea Instalar moldaje con su foto', auto:true,  full:true},
+    P2:{who:'Trabajador', text:'Avise que vio un riesgo de caída, sin poner su nombre', auto:true, full:true},
+    P3:{who:'Supervisor', text:'Diga qué cuadrilla va más atrasada', auto:false, full:false},
+    P4:{who:'Supervisor', text:'Muestre dónde aprobaría la tarea pendiente o pediría corrección', auto:true, full:false},
+    P5:{who:'Supervisor', text:'Encuentre el incidente y diga dónde ocurrió', auto:false, full:false}
+  };
+  const COLS = ['ID','PR','P1_exito','P1_seg','P1_toques','P1_errores','P2_exito','P2_seg','P2_toques','P2_errores','P3_exito','P3_seg','P4_exito','P4_seg','P5_exito','P5_seg'];
+  const ROLES = [['worker-consent','Trabajador · consentimiento'],['worker-tasks','Trabajador · tareas'],['supervisor','Supervisor']];
+  let data = {results:{}, cfg:{role:'worker-consent', pid:''}};   // respaldo en memoria
+  let storageOK = true;
+  let active = null;      // prueba en curso
+  let isOpen = false, ticker = null, armed = {};
+  const panel = document.getElementById('survey');
+  const dot = document.getElementById('sdot');
+
+  /* --- Persistencia (localStorage con try/catch; si falla, queda en memoria) --- */
+  function load(){
+    try {
+      const raw = localStorage.getItem(KEY);
+      if (raw) { const d = JSON.parse(raw); data.results = d.results || {}; data.cfg = Object.assign(data.cfg, d.cfg || {}); }
+    } catch(e){ storageOK = false; }
+  }
+  function save(){
+    try { localStorage.setItem(KEY, JSON.stringify(data)); storageOK = true; } catch(e){ storageOK = false; }
+  }
+
+  /* --- Utilidades --- */
+  const now = function(){ return (window.performance && performance.now) ? performance.now() : Date.now(); };
+  function elapsed(){ if (!active || active.t0==null) return 0; return ((active.tEnd!=null ? active.tEnd : now()) - active.t0)/1000; }
+  const r1 = function(x){ return Math.round(x*10)/10; };
+  const fmt = function(x){ return String(r1(x).toFixed(1)).replace('.', ','); };
+  const fmtEx = function(v){ return v===0.5 ? '0,5' : String(v); };
+  function screenLabel(){
+    const p = cur.params || {};
+    let s;
+    switch(cur.screen){
+      case 'consent': s = p.profile ? 'Mi perfil (consentimiento)' : 'Consentimiento'; break;
+      case 'tasks': s = 'Mis tareas'; break;
+      case 'detail': s = 'Detalle · '+((task(p.id)||{}).title||''); break;
+      case 'evidence': s = p.review ? 'Por enviar' : 'Evidencia · '+((task(p.id)||{}).title||''); break;
+      case 'incident': s = 'Reportar incidente'; break;
+      case 'supervisor': s = 'Panel supervisor'; break;
+      default: s = cur.screen;
+    }
+    return sheetOpen ? s+' · Política' : s;
+  }
+  function actLabel(el){
+    const a = el.getAttribute('aria-label') || el.textContent || '';
+    return a.replace(/\s+/g,' ').trim().slice(0,48) || el.dataset.act || '?';
+  }
+
+  /* --- Clasificación de cada toque: 'ok' (hacia el objetivo), 'error' (desvío) o 'neutral' --- */
+  function classify(act, arg){
+    const s = cur.screen, p = cur.params || {};
+    if (['policy-open','policy-close','consent-check','consent-accept'].indexOf(act)>=0 || sheetOpen) return 'neutral';
+    if (active.id==='P1'){
+      const onPath = s==='consent' || s==='tasks' || (s==='detail' && p.id==='t1') || (s==='evidence' && !p.review && p.id==='t1');
+      if (!onPath) return 'neutral';            // ya se contó el desvío al salir del camino
+      switch(act){
+        case 'open-task': return arg==='t1' ? 'ok' : 'error';
+        case 'check': return 'ok';
+        case 'finish-photo': return task('t1').checks.every(Boolean) ? 'ok' : 'error';
+        case 'finish-task': return 'ok';
+        case 'nav': return arg==='tasks' ? 'neutral' : 'error';
+        default: return 'error';               // atrás, repetir foto, incidente, problema…
+      }
+    }
+    if (active.id==='P2'){
+      const onPath = s==='consent' || s==='tasks' || s==='incident';
+      if (!onPath) return 'neutral';
+      switch(act){
+        case 'incident-open': return 'ok';
+        case 'inc-type': return arg==='caida' ? 'ok' : 'error';
+        case 'inc-photo': return 'neutral';
+        case 'inc-anon': return state.incident.anon ? 'error' : 'ok';
+        case 'inc-send': return (state.incident.type==='caida' && state.incident.anon) ? 'ok' : 'error';
+        case 'nav': return arg==='tasks' ? 'neutral' : 'error';
+        default: return 'error';
+      }
+    }
+    if (active.id==='P4'){
+      if (s!=='supervisor') return 'neutral';
+      return (act==='sup-ok' || act==='sup-fix') ? 'ok' : 'error';
+    }
+    return 'neutral';
+  }
+
+  /* --- Conteo de toques (pointerdown en elementos interactivos) --- */
+  app.addEventListener('pointerdown', function(e){
+    if (!active || active.done || active.t0==null || e.isPrimary===false) return;
+    const el = e.target.closest('[data-act]') || e.target.closest('button,a,input,label,[role="switch"]');
+    if (!el || !app.contains(el)) return;
+    active.taps++;
+    const verdict = classify(el.dataset.act || '', el.dataset.arg);
+    if (verdict==='error') active.errors.push({src:'auto', screen:screenLabel(), act:actLabel(el), t:r1(elapsed())});
+  }, true);
+
+  /* --- Toque largo de 2 s sobre el logo o la esquina superior derecha --- */
+  let lpTimer = null, lpX = 0, lpY = 0;
+  app.addEventListener('pointerdown', function(e){
+    const el = e.target.closest('[data-logo]'); if (!el) return;
+    lpX = e.clientX; lpY = e.clientY;
+    clearTimeout(lpTimer);
+    lpTimer = setTimeout(function(){ lpTimer = null; open(); }, 2000);
+  });
+  ['pointerup','pointercancel','pointerleave'].forEach(function(t){ app.addEventListener(t, function(){ clearTimeout(lpTimer); lpTimer = null; }); });
+  app.addEventListener('pointermove', function(e){ if (lpTimer && (Math.abs(e.clientX-lpX)>12 || Math.abs(e.clientY-lpY)>12)) { clearTimeout(lpTimer); lpTimer = null; } });
+  app.addEventListener('contextmenu', function(e){ if (e.target.closest('[data-logo]')) e.preventDefault(); });
+
+  /* --- Ciclo de vida de una prueba --- */
+  function start(id){
+    const pid = (data.cfg.pid||'').trim().toUpperCase();
+    if (!pid) { msg('Escribe primero el ID del participante.'); const i = panel.querySelector('#s-pid'); if (i) i.focus(); return; }
+    if (active) { msg('Cierra la prueba activa antes de iniciar otra.'); return; }
+    // Condiciones previas para que la prueba sea posible
+    if (id==='P1') { const t = task('t1'); if (t.status!=='todo') { t.status='todo'; t.checks=[false,false,false]; if (state.lastEvidence && state.lastEvidence.taskId==='t1') state.lastEvidence=null; } }
+    if (id==='P2') resetIncident();
+    if (id==='P4') { if (state.sup.verify) { if (state.sup.verify==='ok') state.sup.closed--; state.sup.toVerify++; state.sup.verify=null; } }
+    if (id==='P5') state.sup.alert = 'new';
+    state.role = TESTS[id].who==='Supervisor' ? 'supervisor' : 'worker';
+    const prev = data.results[pid] && data.results[pid][id] ? JSON.parse(JSON.stringify(data.results[pid][id])) : null;
+    active = {id:id, pid:pid, t0:null, tEnd:null, taps:0, errors:[], done:false, prev:prev};
+    close();
+    toRoot(rootEntry(), function(){ if (active) active.t0 = now(); updateDot(); });
+    updateDot();
+  }
+  /* Fin automático: congela tiempo y toques y guarda un resultado provisorio con éxito = 1 */
+  function detect(id, cond){
+    if (!active || active.id!==id || active.done || !cond) return;
+    active.done = true; active.tEnd = now();
+    store(1, true);
+    updateDot();
+  }
+  function store(exito, provisional){
+    const a = active;
+    const rec = {exito:exito, seg:r1(elapsed()), provisional:!!provisional};
+    if (TESTS[a.id].full) { rec.toques = a.taps; rec.errores = a.errors.length; }
+    rec.log = a.errors.slice();
+    data.results[a.pid] = data.results[a.pid] || {};
+    data.results[a.pid][a.id] = rec;
+    data.results[a.pid]._ts = Date.now();
+    save();
+  }
+  function finish(exito){
+    if (!active) return;
+    if (!active.done) { active.tEnd = now(); }
+    store(exito, false);
+    msg(active.id+' guardada para '+active.pid+': éxito '+fmtEx(exito)+' · '+fmt(elapsed())+' s.');
+    active = null; updateDot(); render();
+  }
+  function discard(){
+    if (!active) return;
+    const a = active;
+    if (a.done) {   // se había guardado un provisorio: restaurar el valor anterior
+      if (a.prev) data.results[a.pid][a.id] = a.prev; else if (data.results[a.pid]) delete data.results[a.pid][a.id];
+      if (data.results[a.pid] && Object.keys(data.results[a.pid]).filter(function(k){ return k!=='_ts'; }).length===0) delete data.results[a.pid];
+      save();
+    }
+    active = null; updateDot(); msg('Prueba descartada.'); render();
+  }
+  function addError(){
+    if (!active) return;
+    active.errors.push({src:'manual', screen:screenLabel(), act:'+1 error (encuestador)', t:r1(elapsed())});
+    if (active.done) store(1, true);
+    render();
+  }
+  function updateDot(){
+    dot.className = active ? ('on' + (active.done ? ' done' : '')) : '';
+  }
+
+  /* --- Exportación CSV --- */
+  function pids(){ return Object.keys(data.results); }
+  function csv(){
+    const q = function(v){ v = v==null ? '' : String(v); return /[",\n\r]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; };
+    const lines = [COLS.join(',')];
+    pids().forEach(function(pid){
+      const r = data.results[pid];
+      const g = function(t,f){ return r[t] && r[t][f]!=null ? r[t][f] : ''; };
+      lines.push([pid, 1,
+        g('P1','exito'), g('P1','seg'), g('P1','toques'), g('P1','errores'),
+        g('P2','exito'), g('P2','seg'), g('P2','toques'), g('P2','errores'),
+        g('P3','exito'), g('P3','seg'), g('P4','exito'), g('P4','seg'), g('P5','exito'), g('P5','seg')
+      ].map(q).join(','));
+    });
+    return lines.join('\r\n') + '\r\n';
+  }
+  function csvErrors(){
+    const q = function(v){ v = v==null ? '' : String(v); return /[",\n\r]/.test(v) ? '"'+v.replace(/"/g,'""')+'"' : v; };
+    const lines = ['ID,prueba,origen,pantalla,elemento,seg'];
+    pids().forEach(function(pid){
+      ['P1','P2','P3','P4','P5'].forEach(function(t){
+        const r = data.results[pid][t];
+        (r && r.log || []).forEach(function(e){ lines.push([pid,t,e.src==='auto'?'automatico':'encuestador',e.screen,e.act,e.t].map(q).join(',')); });
+      });
+    });
+    return lines.join('\r\n') + '\r\n';
+  }
+  function stamp(){ const d=new Date(), p=function(n){ return String(n).padStart(2,'0'); }; return d.getFullYear()+p(d.getMonth()+1)+p(d.getDate())+'-'+p(d.getHours())+p(d.getMinutes()); }
+  function download(name, text){
+    try {
+      const blob = new Blob([text], {type:'text/csv;charset=utf-8'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = name; a.rel = 'noopener'; a.style.display = 'none';
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 4000);
+      msg('Descarga iniciada: '+name);
+    } catch(e){ msg('No se pudo descargar. Usa "Copiar al portapapeles".'); }
+  }
+  function copy(text){
+    const fallback = function(){
+      const ta = panel.querySelector('#s-csv');
+      ta.hidden = false; ta.value = text; ta.readOnly = false; ta.focus(); ta.select();
+      try { ta.setSelectionRange(0, text.length); } catch(e){}
+      let ok = false; try { ok = document.execCommand('copy'); } catch(e){}
+      ta.readOnly = true;
+      msg(ok ? 'CSV copiado. Pégalo en la planilla.' : 'Mantén presionado el texto de abajo y elige Copiar.');
+    };
+    if (navigator.clipboard && window.isSecureContext) {
+      navigator.clipboard.writeText(text).then(function(){ msg('CSV copiado. Pégalo en la planilla.'); }, fallback);
+    } else fallback();
+  }
+
+  /* --- Reinicio del prototipo (no borra resultados) --- */
+  function applyRole(role){
+    if (role==='supervisor') { state.role = 'supervisor'; }
+    else { state.role = 'worker'; if (role==='worker-tasks') { state.consented = true; state.consentChecked = true; } else { state.consented = false; state.consentChecked = false; } }
+  }
+  function resetPrototype(){
+    if (active) discard();
+    state = defaultState();
+    applyRole(data.cfg.role);
+    data.cfg.pid = ''; save();
+    toRoot(rootEntry());
+    msg('Prototipo reiniciado. Escribe el ID del siguiente participante.');
+    render();
+    const i = panel.querySelector('#s-pid'); if (i) i.focus();
+  }
+
+  /* --- Botones de dos toques (confirmación sin confirm()) --- */
+  function twoStep(key, el, label, fn){
+    if (armed[key]) { clearTimeout(armed[key]); armed[key] = null; fn(); return; }
+    el.textContent = label;
+    armed[key] = setTimeout(function(){ armed[key] = null; render(); }, 4000);
+  }
+
+  /* --- Interfaz del panel --- */
+  function msg(t){ const m = panel.querySelector('#s-msg'); if (m) m.textContent = t; else pendingMsg = t; }
+  let pendingMsg = '';
+  function open(){
+    if (isOpen) return;
+    isOpen = true; panel.hidden = false; render();
+    if (pendingMsg) { msg(pendingMsg); pendingMsg = ''; }
+    clearInterval(ticker);
+    ticker = setInterval(tick, 200);
+  }
+  function close(){
+    isOpen = false; panel.hidden = true; clearInterval(ticker);
+  }
+  function tick(){
+    if (!active) return;
+    const t = panel.querySelector('#s-time'); if (t) t.textContent = fmt(elapsed());
+  }
+  function savedLine(pid, id){
+    const r = data.results[pid] && data.results[pid][id]; if (!r) return '';
+    let s = 'Guardado: éxito '+fmtEx(r.exito)+' · '+fmt(r.seg)+' s';
+    if (r.toques!=null) s += ' · '+r.toques+' toques · '+r.errores+' errores';
+    if (r.provisional) s += ' (provisorio)';
+    return '<div class="saved-v">'+s+'</div>';
+  }
+  function renderTests(){
+    const pid = (data.cfg.pid||'').trim().toUpperCase();
+    return Object.keys(TESTS).map(function(id){
+      const T = TESTS[id];
+      return '<div class="test"><div class="tx"><b>'+id+' · '+T.who+'</b> <span class="tag">'+(T.auto?'fin automático':'cierre manual')+'</span><p>"'+esc(T.text)+'"</p>'+(pid?savedLine(pid,id):'')+'</div>'+
+        '<button class="sbtn pri'+((active||!pid)?' dim':'')+'" data-s="start" data-arg="'+id+'">Iniciar</button></div>';
+    }).join('');
+  }
+  function renderResults(){
+    const ids = pids();
+    if (!ids.length) return '<p class="muted">Todavía no hay resultados guardados.</p>';
+    const cell = function(r,t){ return r[t] ? fmtEx(r[t].exito)+(r[t].provisional?'*':'') : '–'; };
+    return '<table><thead><tr><th>ID</th><th>P1</th><th>P2</th><th>P3</th><th>P4</th><th>P5</th></tr></thead><tbody>'+
+      ids.map(function(pid){ const r = data.results[pid]; return '<tr><td>'+esc(pid)+'</td><td>'+cell(r,'P1')+'</td><td>'+cell(r,'P2')+'</td><td>'+cell(r,'P3')+'</td><td>'+cell(r,'P4')+'</td><td>'+cell(r,'P5')+'</td></tr>'; }).join('')+
+      '</tbody></table><p class="muted" style="margin-top:6px">'+ids.length+' participante(s). * = fin detectado, falta confirmar.</p>';
+  }
+  function renderActive(){
+    if (!active) return '';
+    const a = active;
+    const log = a.errors.length ? '<ol class="log">'+a.errors.map(function(e){ return '<li>'+(e.src==='auto'?'Auto':'Manual')+' · '+esc(e.screen)+' · '+esc(e.act)+' · '+fmt(e.t)+' s</li>'; }).join('')+'</ol>' : '';
+    return '<h3>Prueba activa</h3><div class="box">'+
+      '<div style="display:flex;justify-content:space-between;align-items:center;gap:8px"><b style="font-size:17px">'+a.id+' · '+esc(a.pid)+'</b><span class="tag'+(a.done?' done':'')+'">'+(a.done?'Fin detectado':'En curso')+'</span></div>'+
+      '<p class="muted" style="margin-top:4px">"'+esc(TESTS[a.id].text)+'"</p>'+
+      '<div class="live"><div><b id="s-time">'+fmt(elapsed())+'</b><span>segundos</span></div><div><b>'+a.taps+'</b><span>toques</span></div><div><b>'+a.errors.length+'</b><span>errores</span></div></div>'+
+      '<button class="sbtn full" data-s="err">+1 error (guarda: '+esc(screenLabel())+')</button>'+
+      log+
+      '<p class="muted" style="margin:12px 0 6px">Cerrar con resultado'+(a.done?' (se propone 1)':'')+':</p>'+
+      '<div class="row">'+
+        '<button class="sbtn '+(a.done?'go':'')+'" data-s="fin" data-arg="1">1 = solo</button>'+
+        '<button class="sbtn" data-s="fin" data-arg="0.5">0,5 = con ayuda</button>'+
+        '<button class="sbtn" data-s="fin" data-arg="0">0 = no lo logró</button>'+
+      '</div>'+
+      '<button class="sbtn full" style="margin-top:8px;background:transparent" data-s="discard">Descartar prueba (no guardar)</button>'+
+    '</div>';
+  }
+  function render(){
+    const pid = data.cfg.pid || '';
+    panel.innerHTML = '<div class="wrap">'+
+      '<div class="shead"><h2>Modo encuestador</h2><button class="sbtn" data-s="close" aria-label="Cerrar panel">'+icon('x',20)+' Cerrar</button></div>'+
+      '<p class="muted">'+(storageOK?'Resultados guardados en este celular.':'No se pudo usar el almacenamiento: los resultados quedan solo en memoria. Exporta antes de cerrar la página.')+'</p>'+
+      '<div class="msg" id="s-msg" role="status" aria-live="polite"></div>'+
+      renderActive()+
+      '<h3>Participante</h3>'+
+      '<input type="text" id="s-pid" value="'+esc(pid)+'" placeholder="Ej.: T03" autocomplete="off" autocapitalize="characters" spellcheck="false" aria-label="ID del participante">'+
+      '<h3>Rol inicial</h3>'+
+      '<div class="row" style="flex-direction:column">'+ROLES.map(function(r){ return '<button class="sbtn" data-s="role" data-arg="'+r[0]+'" aria-pressed="'+(data.cfg.role===r[0])+'">'+r[1]+'</button>'; }).join('')+'</div>'+
+      '<h3>Pruebas</h3><div class="box" id="s-tests">'+renderTests()+'</div>'+
+      '<h3>Resultados</h3><div class="box">'+renderResults()+
+        '<div class="row" style="margin-top:10px"><button class="sbtn pri" data-s="csv">Descargar CSV</button><button class="sbtn" data-s="copy">Copiar al portapapeles</button></div>'+
+        '<button class="sbtn full" style="margin-top:8px" data-s="csv-err">Descargar detalle de errores (CSV)</button>'+
+        '<textarea id="s-csv" readonly hidden aria-label="Texto CSV"></textarea>'+
+        '<button class="sbtn full bad" style="margin-top:8px" data-s="wipe">Borrar todos los resultados</button>'+
+      '</div>'+
+      '<h3>Entre participantes</h3><div class="box">'+
+        '<p class="muted" style="margin-bottom:8px">Vuelve todo al estado inicial (tareas, casillas, banner e incidentes). No borra los resultados guardados.</p>'+
+        '<button class="sbtn full pri" data-s="reset">Reiniciar prototipo</button>'+
+      '</div>'+
+    '</div>';
+  }
+  panel.addEventListener('click', function(e){
+    const b = e.target.closest('[data-s]'); if (!b) return;
+    const a = b.dataset.s, arg = b.dataset.arg;
+    if (a==='close') close();
+    else if (a==='start') start(arg);
+    else if (a==='err') addError();
+    else if (a==='fin') finish(parseFloat(arg));
+    else if (a==='discard') discard();
+    else if (a==='role') {
+      if (active) { msg('Cierra la prueba activa antes de cambiar el rol.'); return; }
+      data.cfg.role = arg; save(); applyRole(arg); toRoot(rootEntry()); render(); msg('Rol aplicado: '+b.textContent+'.');
+    }
+    else if (a==='csv') { if (!pids().length) { msg('No hay resultados para exportar.'); return; } download('sito_resultados_'+stamp()+'.csv', csv()); }
+    else if (a==='csv-err') download('sito_errores_'+stamp()+'.csv', csvErrors());
+    else if (a==='copy') { if (!pids().length) { msg('No hay resultados para copiar.'); return; } copy(csv()); }
+    else if (a==='wipe') twoStep('wipe', b, 'Toca otra vez para borrar TODO', function(){ data.results = {}; save(); render(); msg('Resultados borrados.'); });
+    else if (a==='reset') twoStep('reset', b, 'Toca otra vez para reiniciar', resetPrototype);
+  });
+  panel.addEventListener('input', function(e){
+    if (e.target.id!=='s-pid') return;
+    data.cfg.pid = e.target.value.trim().toUpperCase(); save();
+    const box = panel.querySelector('#s-tests'); if (box) box.innerHTML = renderTests();
+  });
+  document.addEventListener('keydown', function(e){ if (isOpen && e.key==='Escape') close(); });
+
+  load();
+  return {
+    open:open, detect:detect,
+    initialRole:function(){ applyRole(data.cfg.role); },
+    /* Solo para pruebas automatizadas */
+    _debug:function(){ return {active:active, data:data}; }
+  };
+})();
+
+/* =========================================================
+   H. Arranque
+   ========================================================= */
+survey.initialRole();
+(function boot(){
+  const r = rootEntry();
+  const entry = {screen:r.screen, params:{}, idx:0};
+  nav.stack = [entry];
+  pushHist(entry, true);
+  show(entry, null);
+})();
+window.__sito = {survey:survey, getState:function(){ return state; }, getCur:function(){ return cur; }};
+
+/* Service worker opcional: solo si existe sw.js junto al archivo y se sirve por https */
+if ('serviceWorker' in navigator && location.protocol==='https:') {
+  navigator.serviceWorker.register('sw.js').catch(function(){});
+}
+
+})();
+</script>
+</body>
+</html>
