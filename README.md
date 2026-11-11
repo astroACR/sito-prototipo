@@ -14,7 +14,9 @@ Mockup en HTML de **SITO (Sistema Integral de Trazabilidad de Obras)** para prue
 3. Entra a **Settings → Pages**. En *Source* elige **Deploy from a branch**, rama `main` y carpeta `/ (root)`. Guarda.
 4. Espera uno o dos minutos. La dirección queda así: `https://TU-USUARIO.github.io/sito-prototipo/`.
 
-También puedes enviar `index.html` al celular y abrirlo como archivo, porque funciona igual. Desde un archivo local no se puede agregar a la pantalla de inicio con modo sin conexión.
+**En Android** también puedes enviar `index.html` al celular y abrirlo como archivo. Desde un archivo local no se puede agregar a la pantalla de inicio con modo sin conexión.
+
+**En iPhone no abras el archivo directamente.** Desde Archivos o WhatsApp se abre en una vista previa, no en Safari: el prototipo puede no funcionar y los resultados no se guardan. Usa siempre la dirección de GitHub Pages.
 
 ## Agregar a la pantalla de inicio
 
@@ -37,3 +39,4 @@ Con `sw.js` publicado, la app abre aunque el celular esté en modo avión. Antes
 - **Errores:** se cuentan solos cada vez que la persona toca algo que no lleva al objetivo, y se guarda en qué pantalla pasó. El botón **+1 error** suma los que observes tú.
 - **Exportar:** **Descargar CSV** usa las mismas columnas que la planilla (`ID,PR,P1_exito,…,P5_seg`), con punto decimal. En iPhone, usa **Copiar al portapapeles** y pega el texto en la planilla. Hay un segundo CSV opcional con el detalle de cada error.
 - Los resultados quedan guardados en ese celular (`localStorage`). **Exporta al final de cada jornada.**
+- **En iPhone, usa siempre la misma vía.** Safari y el ícono de inicio guardan resultados por separado, así que lo que registres en uno no aparece en el otro. Usa el ícono, porque además Safari puede borrar los datos de un sitio que no se usa en 7 días. No uses navegación privada. El panel indica si la app se abrió desde el ícono, en el navegador o como archivo, y lo muestra en amarillo cuando hay riesgo.

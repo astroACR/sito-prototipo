@@ -934,6 +934,37 @@ const survey = (function(){
     try { localStorage.setItem(KEY, JSON.stringify(data)); storageOK = true; } catch(e){ storageOK = false; }
   }
 
+  /* --- Almacenamiento persistente: pide al navegador no borrar los resultados por falta de espacio --- */
+  let persisted = null;   // null = no disponible, true/false = respuesta del navegador
+  function requestPersist(){
+    try {
+      if (!navigator.storage || !navigator.storage.persist) return;
+      const ask = navigator.storage.persisted ? navigator.storage.persisted() : Promise.resolve(false);
+      ask.then(function(p){ return p ? true : navigator.storage.persist(); })
+        .then(function(p){ persisted = !!p; updateEnv(); })
+        .catch(function(){});
+    } catch(e){}
+  }
+
+  /* --- Cómo se abrió la app: en iPhone, Safari y el ícono de inicio guardan datos por separado --- */
+  const IS_IOS = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform==='MacIntel' && navigator.maxTouchPoints>1);
+  function launchMode(){
+    if (location.protocol==='file:') return 'file';
+    const standalone = navigator.standalone===true ||
+      (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+    return standalone ? 'app' : 'browser';
+  }
+  function envHTML(){
+    const mode = launchMode();
+    let t = mode==='app' ? 'Abierta desde el <b>ícono de inicio</b>.'
+          : mode==='file' ? '<b>Abierta como archivo.</b> Los resultados pueden no guardarse: usa la dirección web.'
+          : 'Abierta en el <b>navegador</b>.';
+    if (mode==='browser' && IS_IOS) t += ' En iPhone, Safari y el ícono de inicio guardan resultados por separado: usa siempre la misma vía (mejor el ícono).';
+    t += ' Almacenamiento persistente: '+(persisted===null ? 'no disponible' : persisted ? 'sí' : 'no')+'.';
+    return t;
+  }
+  function updateEnv(){ const el = panel.querySelector('#s-env'); if (el) el.innerHTML = envHTML(); }
+
   /* --- Utilidades --- */
   const now = function(){ return (window.performance && performance.now) ? performance.now() : Date.now(); };
   function elapsed(){ if (!active || active.t0==null) return 0; return ((active.tEnd!=null ? active.tEnd : now()) - active.t0)/1000; }
@@ -1218,6 +1249,7 @@ const survey = (function(){
     panel.innerHTML = '<div class="wrap">'+
       '<div class="shead"><h2>Modo encuestador</h2><button class="sbtn" data-s="close" aria-label="Cerrar panel">'+icon('x',20)+' Cerrar</button></div>'+
       '<p class="muted">'+(storageOK?'Resultados guardados en este celular.':'No se pudo usar el almacenamiento: los resultados quedan solo en memoria. Exporta antes de cerrar la página.')+'</p>'+
+      '<p class="muted" id="s-env"'+(launchMode()!=='app' && IS_IOS || launchMode()==='file' ? ' style="color:#F2B705"' : '')+'>'+envHTML()+'</p>'+
       '<div class="msg" id="s-msg" role="status" aria-live="polite"></div>'+
       renderActive()+
       '<h3>Participante</h3>'+
@@ -1263,6 +1295,7 @@ const survey = (function(){
   document.addEventListener('keydown', function(e){ if (isOpen && e.key==='Escape') close(); });
 
   load();
+  requestPersist();
   return {
     open:open, detect:detect,
     initialRole:function(){ applyRole(data.cfg.role); },

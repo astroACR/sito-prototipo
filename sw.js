@@ -2,7 +2,7 @@
    index.html funciona sin este archivo. Si lo subes junto a index.html a GitHub Pages,
    la app también abre sin internet desde "Agregar a pantalla de inicio",
    aunque el navegador se haya cerrado. */
-const CACHE = 'sito-proto-v1';
+const CACHE = 'sito-proto-v2';
 const FILES = ['./', './index.html'];
 
 self.addEventListener('install', (e) => {
