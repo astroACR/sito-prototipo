@@ -1,11 +1,11 @@
-/* Carga schema.sql, policies.sql, seed.sql y reset-demo.sql en un PostgreSQL real en memoria (PGlite)
+/* Carga las migraciones, seed.sql y reset-demo.sql en un PostgreSQL real en memoria (PGlite)
    y comprueba las reglas de acceso con cada tipo de usuario.
 
    No reemplaza probar contra el proyecto Supabase real (ver "npm run probar:supabase"):
    aquí Auth, Storage y Realtime están imitados por supabase/pruebas/supabase-simulado.sql. */
 
 import { describe, it, expect, beforeAll } from 'vitest'
-import { readFileSync } from 'node:fs'
+import { readFileSync, readdirSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
 import { PGlite } from '@electric-sql/pglite'
 import { pgcrypto } from '@electric-sql/pglite/contrib/pgcrypto'
@@ -38,6 +38,14 @@ async function como(usuarioId, tarea) {
   }
 }
 
+/** Aplica todas las migraciones de supabase/migrations/ en orden, igual que la CLI. */
+async function aplicarMigraciones() {
+  const carpeta = fileURLToPath(new URL('./migrations/', import.meta.url))
+  for (const archivo of readdirSync(carpeta).filter((n) => n.endsWith('.sql')).sort()) {
+    await pg.exec(readFileSync(carpeta + archivo, 'utf8'))
+  }
+}
+
 const admin = (texto, valores) => pg.query(texto, valores).then((r) => r.rows)
 
 const cerrar = (q, tarea, evidencia, ruta = null) =>
@@ -54,15 +62,13 @@ const codigoDe = (promesa) => promesa.then(() => null, (error) => error.code)
 beforeAll(async () => {
   pg = new PGlite({ extensions: { pgcrypto } })
   await pg.exec(leer('./pruebas/supabase-simulado.sql'))
-  await pg.exec(leer('./schema.sql'))
-  await pg.exec(leer('./policies.sql'))
+  await aplicarMigraciones()
   await pg.exec(leer('./seed.sql'))
 }, 120000)
 
 describe('archivos SQL', () => {
   it('se pueden ejecutar por segunda vez sin errores ni datos duplicados', async () => {
-    await pg.exec(leer('./schema.sql'))
-    await pg.exec(leer('./policies.sql'))
+    await aplicarMigraciones()
     await pg.exec(leer('./seed.sql'))
 
     const [c] = await admin(`select
@@ -143,7 +149,19 @@ describe('quién ve qué (RLS)', () => {
     }
     await expect(como(null, (q) => q(INSERTAR_INCIDENTE, [uuid(900), OBRA, 'riesgo', 'caida', null, true, null]))).rejects.toThrow(/permission denied/)
     await expect(como(null, (q) => q(`select public.atender_incidente($1)`, [ID.incidente(1)]))).rejects.toThrow(/permission denied/)
-    await expect(como(null, (q) => q(`select public.mi_rol()`))).rejects.toThrow(/permission denied/)
+    await expect(como(null, (q) => q(`select privado.mi_rol()`))).rejects.toThrow(/permission denied/)
+  })
+
+  it('las funciones de la sesión no están en el esquema que publica la API', async () => {
+    const filas = await admin(
+      `select n.nspname as esquema, p.proname as nombre from pg_proc p join pg_namespace n on n.oid = p.pronamespace
+        where p.proname in ('mi_rol', 'mi_obra', 'mi_cuadrilla', 'obra_existe') order by 2`,
+    )
+    expect(filas.every((f) => f.esquema === 'privado')).toBe(true)
+    expect(filas).toHaveLength(4)
+    /* Con sesión se pueden usar dentro de las reglas, pero no ver la de otra obra ni la de otro rol. */
+    expect(await como(PEDRO, (q) => q(`select privado.mi_rol() as rol`))).toEqual([{ rol: 'trabajador' }])
+    await expect(como(PEDRO, (q) => q(`select privado.obra_existe('x')`))).resolves.toBeTruthy()
   })
 
   it('una persona de otra obra no ve nada de Torre Norte', async () => {

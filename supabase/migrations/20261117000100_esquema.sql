@@ -1,11 +1,13 @@
 -- =====================================================================
 -- SITO · Esquema de la base de datos (Supabase / PostgreSQL)
 --
--- Orden de ejecución en el editor SQL de Supabase:
---   1. schema.sql      (este archivo: tablas)
---   2. policies.sql    (permisos, reglas de acceso y funciones)
---   3. seed.sql        (datos de ejemplo de la obra "Torre Norte")
+-- Migraciones de supabase/migrations/, en este orden:
+--   1. …_esquema.sql     (este archivo: tablas)
+--   2. …_politicas.sql   (permisos, reglas de acceso y funciones)
+-- Después, supabase/seed.sql carga los datos de ejemplo de la obra "Torre Norte".
 --
+-- Con la CLI se aplican con "npm run db:push" (ver README).
+-- También se pueden pegar en el editor SQL del panel, en el mismo orden.
 -- Se puede ejecutar más de una vez sin dañar los datos existentes.
 -- =====================================================================
 

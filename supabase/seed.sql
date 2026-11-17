@@ -2,7 +2,7 @@
 -- SITO · Datos de ejemplo de la obra "Torre Norte"
 --
 -- ARCHIVO GENERADO: no lo edites a mano. Cambia src/datos/semilla.js y ejecuta "npm run seed".
--- Ejecutar después de schema.sql y policies.sql. Se puede ejecutar más de una vez.
+-- Se carga después de las migraciones de supabase/migrations/. Se puede ejecutar más de una vez.
 --
 -- Usuarios de ejemplo (la clave de todos es 123456):
 --   11111111-1  Pedro Rojas     Cuadrilla 2 · Moldaje

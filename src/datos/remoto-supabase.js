@@ -1,7 +1,7 @@
 /* Conexión a Supabase (Auth, Postgres con RLS, Storage y Realtime).
 
    Cumple el mismo contrato que remoto-demo.js (ver el comentario al inicio de ese archivo).
-   Las reglas que aquí se asumen están en /supabase/policies.sql.
+   Las reglas que aquí se asumen están en supabase/migrations/…_politicas.sql.
 
    Solo usa la clave pública ("anon"). La clave service_role nunca va en la app. */
 

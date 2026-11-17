@@ -49,6 +49,20 @@ Decisiones que el plan no cubría, con el motivo de cada una. Están ordenadas p
 - **La librería de Supabase se carga solo cuando hay credenciales.** En modo demo el celular no la descarga ni la procesa. Con Supabase, la primera pantalla aparece antes de cargarla.
 - **La tarea en "Corregir" de los datos de ejemplo está asignada a Pedro.** Así, al ingresar como trabajador, la demo muestra desde el principio cómo se ve una corrección.
 
+## Supabase en la nube
+
+- **Se usó el proyecto "sito" que ya existía en la organización, en vez de crear uno nuevo.** Estaba vacío: sin tablas, usuarios, fotos ni funciones. Crear otro habría dejado dos proyectos con el mismo nombre, y el plan gratis permite solo dos activos. Está en Oregón (`us-west-2`) y no en São Paulo, lo que suma algo de latencia desde Chile. En las pruebas, un registro llegó al servidor medio segundo después de volver la señal.
+- **Los SQL pasaron a ser migraciones de la CLI** (`supabase/migrations/`). Así, aplicar cambios es un solo comando y Supabase lleva el registro de qué se aplicó. `seed.sql` quedó en `supabase/seed.sql`, que es donde la CLI lo busca.
+- **Se usa la clave "publishable" (`sb_publishable_…`)**, que es la clave pública nueva de Supabase. La variable sigue llamándose `VITE_SUPABASE_ANON_KEY` y acepta también la clave *anon* antigua.
+- **Registro abierto desactivado.** Con la clave pública, cualquiera podía crearse una cuenta (aunque sin perfil no veía nada). Ahora solo entran las personas inscritas por la obra. Se subió solo ese ajuste: el `config.toml` completo habría cambiado otras opciones de la nube que no tienen que ver con SITO.
+- **Ajustes del revisor de seguridad de Supabase** (migración `…_ajustes_seguridad.sql`):
+  - Las funciones que leen el perfil de la sesión pasaron al esquema `privado`, que la API no publica. Antes cualquiera podía llamarlas por internet; por ejemplo, sin sesión se podía preguntar si existía una obra.
+  - Las reglas de acceso calculan la sesión una vez por consulta y no una vez por fila.
+  - Se agregaron índices para las llaves que usan esas reglas.
+- **Avisos del revisor que se dejaron a propósito:**
+  - Las funciones de cambio de estado (`cerrar_tarea`, `verificar_tarea`, etc.) se pueden llamar desde la API: son la única puerta para cambiar estados y validan quién llama.
+  - La protección contra claves filtradas sigue desactivada: rechazaría el PIN de demostración `123456`. Con personas reales hay que activarla y dar claves distintas.
+
 ## Pruebas
 
 - **Los archivos SQL se prueban en un PostgreSQL real en memoria (PGlite).** Auth, Storage y Realtime están imitados en `supabase/pruebas/supabase-simulado.sql`. Esto no reemplaza probar contra el proyecto real: para eso está `npm run probar:supabase`.

@@ -4,7 +4,7 @@ Duración: unos 8 minutos. Hay dos celulares, uno de **trabajador** (Pedro) y ot
 
 ## Antes de la presentación (el día anterior)
 
-1. **Reinicia los datos.** Con Supabase, ejecuta `supabase/reset-demo.sql` en el editor SQL del panel. En modo demo, usa "Reiniciar datos de ejemplo" en la pantalla de ingreso de cada celular.
+1. **Reinicia los datos.** Con Supabase, ejecuta `npm run db:reiniciar-demo` y `npm run db:borrar-fotos` (o pega `supabase/reset-demo.sql` en el editor SQL del panel). En modo demo, usa "Reiniciar datos de ejemplo" en la pantalla de ingreso de cada celular.
 2. **Abre la app en los dos celulares con señal** y agrégala a la pantalla de inicio:
    - Android: menú ⋮ → **Agregar a la pantalla principal**.
    - iPhone: **Compartir → Agregar a inicio**.

@@ -9,7 +9,7 @@ create role authenticated nologin;
 create role service_role nologin;
 
 -- Supabase entrega por defecto todos los permisos de las tablas y funciones nuevas a estos roles.
--- Se imita para comprobar que policies.sql de verdad los quita.
+-- Se imita para comprobar que la migración de políticas de verdad los quita.
 alter default privileges in schema public grant all on tables to anon, authenticated, service_role;
 alter default privileges in schema public grant execute on functions to anon, authenticated, service_role;
 grant usage on schema public, extensions to anon, authenticated, service_role;

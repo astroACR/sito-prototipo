@@ -43,33 +43,68 @@ La lista completa está al inicio de [`supabase/seed.sql`](supabase/seed.sql).
 | `npm run preview` | Sirve `dist/` para probarla como quedará publicada, con el modo sin señal incluido. |
 | `npm run seed` | Regenera `supabase/seed.sql` y `supabase/reset-demo.sql` desde `src/datos/semilla.js`. |
 | `npm run probar:supabase` | Revisa que el proyecto Supabase real responda y aplique las reglas de acceso. Solo lee datos. |
+| `npm run db:…` | Comandos para administrar Supabase. Ver [Supabase](#supabase). |
 
-## Conectarla a Supabase
+## Supabase
 
 Sin Supabase, cada celular tiene su propia copia de los datos. **Para que lo que hace el trabajador le llegue al supervisor en otro celular, hace falta Supabase.**
 
-1. Crea un proyecto en [supabase.com](https://supabase.com) (el plan gratis basta). Elige la región de São Paulo, que es la más cercana.
-2. En **SQL Editor**, ejecuta en este orden el contenido de:
-   1. [`supabase/schema.sql`](supabase/schema.sql): las tablas.
-   2. [`supabase/policies.sql`](supabase/policies.sql): las reglas de acceso, las funciones y el bucket de fotos.
-   3. [`supabase/seed.sql`](supabase/seed.sql): la obra "Torre Norte" con sus usuarios de ejemplo.
-3. Revisa que en **Authentication → Providers**, *Email* esté activado.
-4. En **Project Settings → API**, copia la *Project URL* y la clave pública **anon**.
-5. Copia `.env.example` como `.env.local` y pega esos dos datos.
-6. Comprueba la conexión con `npm run probar:supabase` (las instrucciones están al inicio de [`scripts/probar-supabase.mjs`](scripts/probar-supabase.mjs)) y luego con `npm run dev`.
+El proyecto ya está creado y configurado:
 
-> **La clave `service_role` nunca va en la app, en `.env.local` ni en GitHub.** Da acceso total a la base de datos. La app solo usa la clave pública **anon**, y las reglas de acceso de `policies.sql` deciden qué puede ver y hacer cada persona.
+| | |
+|---|---|
+| Nombre | `sito` (organización *astroACR sandbox*) |
+| Reference ID | `eprsowelxtpvtbsvnalk` |
+| URL | `https://eprsowelxtpvtbsvnalk.supabase.co` |
+| Región | Oregón (`us-west-2`) |
 
-**Para reiniciar la demo**, ejecuta [`supabase/reset-demo.sql`](supabase/reset-demo.sql). Vuelve a dejar la jornada de ejemplo con la fecha de hoy, sin tocar los usuarios.
+Ya tiene aplicadas las migraciones de [`supabase/migrations/`](supabase/migrations/) y los datos de ejemplo de [`supabase/seed.sql`](supabase/seed.sql). El registro abierto está desactivado: solo entran las personas que inscribe la obra.
 
-**Ojo:** el plan gratis de Supabase pausa el proyecto si pasa una semana sin uso. Antes de una presentación, entra al panel y reactívalo.
+### Usarlo desde tu computador
+
+1. Copia `.env.example` como `.env.local` y completa:
+   - `VITE_SUPABASE_URL=https://eprsowelxtpvtbsvnalk.supabase.co`
+   - `VITE_SUPABASE_ANON_KEY=` la clave **publishable** (`sb_publishable_…`), de **Project Settings → API Keys**. También sirve la clave *anon* antigua.
+2. `npm run dev`: la app deja de decir "Modo demostración" y usa los datos de la nube.
+
+> **Las claves secretas (`sb_secret_…` o `service_role`) nunca van en la app, en `.env.local` ni en GitHub.** Dan acceso total a la base de datos. La app solo usa la clave pública, y las reglas de acceso de las migraciones deciden qué puede ver y hacer cada persona.
+
+### Administrarlo con la CLI
+
+La CLI de Supabase viene instalada con el proyecto (`npx supabase …`). La primera vez en cada computador:
+
+```bash
+npx supabase login                                     # abre el navegador
+npm run db:enlazar -- --project-ref eprsowelxtpvtbsvnalk
+```
+
+| Comando | Para qué |
+|---|---|
+| `npm run probar:supabase` | Revisa, solo leyendo, que cada rol vea lo que le corresponde. Necesita las variables de `.env.local` en la terminal (ver el inicio de [`scripts/probar-supabase.mjs`](scripts/probar-supabase.mjs)). |
+| `npm run db:reiniciar-demo` | Deja la jornada de ejemplo como al principio, con la fecha de hoy. No toca los usuarios. Pide confirmación. |
+| `npm run db:borrar-fotos` | Borra las fotos subidas en las pruebas. Pide confirmación. |
+| `npm run db:subir` | Aplica las migraciones nuevas de `supabase/migrations/` (y los datos de ejemplo, si cambiaron). |
+| `npm run db:revisar` | Corre el revisor de seguridad y rendimiento de Supabase. |
+
+**Para cambiar la base de datos**, crea un archivo nuevo en `supabase/migrations/` (con fecha y hora al inicio del nombre, como los existentes). Nunca edites una migración ya aplicada. Luego ejecuta `npm test` y `npm run db:subir`.
+
+**No uses `supabase config push` con el `config.toml` completo:** cambiaría ajustes de la nube que no tienen que ver con SITO (por ejemplo, la verificación en dos pasos). `config.toml` es para un Supabase local.
+
+**Ojo:** el plan gratis pausa el proyecto si pasa una semana sin uso. Antes de una presentación, entra al panel y reactívalo.
+
+### Crear otro proyecto desde cero
+
+1. Crea el proyecto en [supabase.com](https://supabase.com) y enlázalo con `npm run db:enlazar -- --project-ref <id>`.
+2. `npm run db:subir`: aplica las migraciones y los datos de ejemplo.
+3. En **Authentication → Sign In / Providers**, desactiva *Allow new users to sign up*.
+4. Sigue los pasos de "Usarlo desde tu computador" con la URL y la clave del proyecto nuevo.
 
 ## Publicar en GitHub Pages
 
 La app se publica sola con [GitHub Actions](.github/workflows/deploy.yml) cada vez que se sube un cambio a `main`.
 
 1. **Settings → Pages → Source: "GitHub Actions".** Antes estaba en "Deploy from a branch": hay que cambiarlo, porque el `index.html` de la raíz ya no es la app terminada, sino su punto de partida.
-2. Para usar Supabase en la versión publicada: **Settings → Secrets and variables → Actions → pestaña Variables**. Crea `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY`. Sin ellas, se publica en modo demostración.
+2. Para usar Supabase en la versión publicada: **Settings → Secrets and variables → Actions → pestaña Variables**. Crea `VITE_SUPABASE_URL` y `VITE_SUPABASE_ANON_KEY` con los mismos valores de `.env.local` (la clave pública). Sin ellas, se publica en modo demostración.
 3. La dirección sigue siendo `https://TU-USUARIO.github.io/sito-prototipo/`.
 
 En los celulares que ya tenían instalado el prototipo, la app nueva lo reemplaza sola la próxima vez que se abra con señal.
@@ -100,7 +135,8 @@ src/
   pantallas/    comunes/ (ingreso, consentimiento), trabajador/, supervisor/
   estilos/      base.css (copiado del prototipo) y app.css (piezas nuevas)
   sw.js         Service worker
-supabase/       schema.sql, policies.sql, seed.sql, reset-demo.sql y sus pruebas
+supabase/       migrations/ (tablas, reglas de acceso, ajustes), seed.sql, reset-demo.sql,
+                config.toml (Supabase local) y sus pruebas
 legacy/         Prototipo de validación, sin modificar
 docs/           Decisiones del desarrollo y guion de la demo
 ```

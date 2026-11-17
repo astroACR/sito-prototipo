@@ -1,7 +1,7 @@
 -- =====================================================================
 -- SITO · Permisos, reglas de acceso (RLS) y funciones
 --
--- Ejecutar después de schema.sql. Se puede ejecutar más de una vez.
+-- Va después de …_esquema.sql. Se puede ejecutar más de una vez.
 --
 -- Resumen de las reglas:
 --   · El trabajador ve sus tareas y las de su cuadrilla.

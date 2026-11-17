@@ -12,7 +12,7 @@ describe('datos de ejemplo', () => {
   })
 
   it('los archivos SQL no contienen claves de servicio', () => {
-    for (const archivo of ['schema.sql', 'policies.sql', 'seed.sql', 'reset-demo.sql']) {
+    for (const archivo of ['migrations/20261117000100_esquema.sql', 'migrations/20261117000200_politicas.sql', 'seed.sql', 'reset-demo.sql']) {
       expect(leer(archivo)).not.toMatch(/service_role\s*key|eyJhbGciOi/i)
     }
   })
