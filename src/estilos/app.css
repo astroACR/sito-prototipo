@@ -1,0 +1,154 @@
+/* =========================================================
+   SITO · Piezas nuevas de la app funcional
+
+   Todo se arma con los tokens de base.css (colores, radios, tamaños).
+   No se agregan colores ni tipografías nuevas.
+   ========================================================= */
+
+/* Tamaño de letra: 1 = normal. "Letra más grande" (Mi perfil) lo sube un 20 %. */
+:root{--fs:1}
+:root.letra-grande{--fs:1.2}
+
+input,textarea{-webkit-user-select:text;user-select:text}
+textarea,select{font:inherit;color:inherit}
+.blk{display:block}
+.mt{margin-top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* Con letra grande, las cajas de alto fijo crecen con su texto. */
+.type{height:auto;min-height:112px}
+
+/* Estado "Corregir": mismo patrón que los otros estados, con el rojo del sistema. */
+.tile-red{background:var(--red);color:#fff}
+.st-red{color:var(--red)}
+
+/* Toque más grande en el título de la barra (abre "Mi cuenta" del supervisor). */
+.metabtn{
+  appearance:none;border:2px solid var(--line);background:var(--card);cursor:pointer;
+  display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 14px;border-radius:999px;
+  font-size:calc(15px * var(--fs));font-weight:700;color:var(--ink);
+}
+.metabtn:active{background:var(--line)}
+
+/* ---------- Avisos dentro de la pantalla ---------- */
+.notice{
+  display:flex;gap:12px;align-items:flex-start;background:var(--blue-bg);color:var(--blue);
+  border-radius:var(--r-card);padding:14px 16px;font-size:calc(16px * var(--fs));font-weight:600;
+}
+.notice .ic{margin-top:1px}
+.notice.warn-notice{background:var(--warn-bg);color:var(--warn-ink);border:1px solid #F0D98A}
+.notice > div{flex:1;min-width:0}
+
+/* Motivo de corrección que escribió el supervisor (detalle de tarea). */
+.fix{
+  display:flex;gap:12px;align-items:flex-start;background:var(--red-bg);color:var(--red-ink);
+  border:1px solid #F4C7C1;border-radius:var(--r-card);padding:14px 16px;margin-top:14px;
+  font-size:calc(16px * var(--fs));
+}
+.fix b{display:block;font-size:calc(17px * var(--fs));font-weight:800}
+.fix ul{margin:6px 0 0;padding-left:20px;display:flex;flex-direction:column;gap:2px;font-weight:600}
+.fix q{display:block;margin-top:6px;quotes:"«" "»"}
+
+/* Alerta de problema de tarea (panel del supervisor): la misma alerta, en ámbar. */
+.alert.amber{background:var(--warn-bg);color:var(--warn-ink);border-color:#F0D98A}
+.alert.amber .act{background:var(--ink);color:#fff}
+.alert .tx{appearance:none;border:0;background:none;color:inherit;text-align:left;padding:0;cursor:pointer;font-size:calc(15px * var(--fs))}
+.alerts{display:flex;flex-direction:column}
+
+/* ---------- Ingreso: RUT y clave con teclado grande ---------- */
+.login{display:flex;flex-direction:column;gap:14px;flex:1;min-height:0}
+.field{
+  display:flex;align-items:center;justify-content:center;min-height:68px;padding:0 16px;
+  background:var(--card);border:2px solid var(--ink);border-radius:var(--r-card);
+  font-size:calc(28px * var(--fs));font-weight:800;letter-spacing:.02em;font-variant-numeric:tabular-nums;
+}
+.field.empty{color:var(--ink2);font-weight:600;font-size:calc(20px * var(--fs));letter-spacing:0}
+.field.bad{border-color:var(--red)}
+.dots{display:flex;gap:14px;justify-content:center;align-items:center;min-height:68px}
+.dots i{width:20px;height:20px;border-radius:50%;border:2px solid var(--ink2);background:var(--card)}
+.dots i.on{background:var(--ink);border-color:var(--ink)}
+.dots.bad i{border-color:var(--red)}
+.errmsg{color:var(--red-ink);background:var(--red-bg);border-radius:12px;padding:10px 14px;font-size:calc(16px * var(--fs));font-weight:700;text-align:center}
+.pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.key{
+  appearance:none;border:1px solid var(--line);background:var(--card);border-radius:var(--r-card);
+  min-height:58px;font-size:calc(26px * var(--fs));font-weight:800;color:var(--ink);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:6px;padding:0;
+}
+.key:active{background:var(--line)}
+.key.aux{font-size:calc(15px * var(--fs));font-weight:700;background:transparent;flex-direction:column;gap:2px}
+.demo{padding:12px 14px;font-size:calc(15px * var(--fs));color:var(--ink2)}
+.demo b{color:var(--ink)}
+.demo .row{display:flex;gap:8px;margin-top:10px}
+.demo .row .btn{min-height:48px;font-size:calc(15px * var(--fs));padding:0 10px}
+
+/* ---------- Fotos reales ---------- */
+.photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.photo.photo-sm{height:220px}
+.thumb{overflow:hidden;position:relative}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.filein{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+
+/* ---------- Elegir en vez de escribir ---------- */
+.picks{display:flex;flex-wrap:wrap;gap:8px}
+.picks.line{flex-wrap:nowrap;overflow-x:auto;margin:0 calc(-1 * var(--gx));padding:2px var(--gx) 6px;scrollbar-width:none}
+.picks.line::-webkit-scrollbar{display:none}
+.pick{
+  appearance:none;cursor:pointer;flex:none;min-height:48px;padding:0 16px;border-radius:999px;
+  border:2px solid var(--line);background:var(--card);color:var(--ink);
+  display:inline-flex;align-items:center;gap:8px;white-space:nowrap;
+  font-size:calc(16px * var(--fs));font-weight:700;
+}
+.pick[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.pick[aria-pressed="true"] .ic{color:var(--yellow)}
+.opts{display:flex;flex-direction:column;gap:10px}
+.opt{
+  appearance:none;width:100%;text-align:left;cursor:pointer;color:var(--ink);
+  display:flex;align-items:center;gap:14px;padding:12px 14px;min-height:76px;
+  background:var(--card);border:2px solid var(--line);border-radius:var(--r-card);
+}
+.opt:active{background:#FBFAF7}
+.opt .tx{flex:1;min-width:0}
+.opt b{display:block;font-size:calc(17px * var(--fs));font-weight:800;line-height:1.25}
+.opt .tx span{display:block;font-size:calc(15px * var(--fs));color:var(--ink2);margin-top:2px}
+.opt[aria-pressed="true"]{border-color:var(--ink)}
+.opt .chev{color:var(--ink2)}
+.label{display:block;font-size:calc(17px * var(--fs));font-weight:800;margin:22px 0 10px}
+.label small{font-size:calc(15px * var(--fs));font-weight:600;color:var(--ink2)}
+.inp,.txt{
+  display:block;width:100%;border:2px solid var(--line);border-radius:var(--r-card);background:var(--card);
+  padding:0 16px;min-height:56px;font-size:calc(17px * var(--fs));color:var(--ink);
+}
+.txt{padding:12px 16px;min-height:92px;resize:none;line-height:1.35}
+.inp:focus-visible,.txt:focus-visible{outline:3px solid var(--blue);outline-offset:2px;border-color:var(--ink)}
+
+/* ---------- Listas de datos (perfil, resumen, detalle) ---------- */
+.rows{padding:2px 16px}
+.rows .row{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:13px 0;font-size:calc(16px * var(--fs));color:var(--ink2)}
+.rows .row + .row{border-top:1px solid var(--line)}
+.rows .row b{color:var(--ink);font-weight:800;text-align:right}
+.rowbtn{
+  appearance:none;width:100%;cursor:pointer;text-align:left;color:var(--ink);margin-top:10px;
+  display:flex;align-items:center;gap:14px;padding:14px 12px 14px 16px;min-height:64px;
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r-card);
+  font-size:calc(17px * var(--fs));font-weight:800;
+}
+.rowbtn:active{background:#FBFAF7}
+.rowbtn .tx{flex:1;min-width:0}
+.rowbtn .chev{color:var(--ink2)}
+.switchrow{color:var(--ink)}
+.day{font-size:calc(15px * var(--fs));font-weight:800;color:var(--ink2);margin:22px 0 8px;text-transform:none}
+.checkro{display:flex;align-items:center;gap:12px;min-height:48px;font-size:calc(17px * var(--fs));font-weight:600;border-top:1px solid var(--line)}
+.checkro:first-of-type{border-top:0}
+.sheet p{font-size:calc(16px * var(--fs));color:var(--ink2);margin-bottom:14px}
+.sheet .btn + .btn,.sheet .btn + .link,.sheet .opts + .btn{margin-top:10px}
+.sheet .opts{margin-bottom:6px}
+.vrow{appearance:none;width:100%;text-align:left;cursor:pointer;color:var(--ink);margin-top:8px}
+.vrow:first-of-type{margin-top:0}
+.vrow .chev{color:var(--ink2)}
+.qrow + .qrow{margin-top:0}
+.center-fill{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--ink2);text-align:center;padding:24px}
+.badge-demo{
+  display:inline-flex;align-items:center;min-height:26px;padding:2px 10px;border-radius:999px;
+  background:var(--warn-bg);color:var(--amber-ink);font-size:calc(13px * var(--fs));font-weight:800;
+}
